@@ -16,6 +16,11 @@ export default {
               TabTwoScreen: 'two',
             },
           },
+          ManageGoals:{
+            screens:{
+              ManageGoalsScreen: 'manage',
+            },
+          },
         },
       },
       NotFound: '*',
