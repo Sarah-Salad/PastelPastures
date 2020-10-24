@@ -6,9 +6,9 @@ export default {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          Profile: {
             screens: {
-              TabOneScreen: 'one',
+              Profile: 'profile',
             },
           },
           TabTwo: {
