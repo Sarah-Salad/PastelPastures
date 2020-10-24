@@ -1,9 +1,12 @@
 import React from 'react';
-import './GoalItem.css'
+import './GoalItem.css';
+import {Goal,ToggleGoal} from './types';
+
 interface GoalItemProps {
     goal: {
         text: string;
         completed: boolean;
+      //  toggleGoal: ToggleGoal;
     }
 }
 
@@ -12,7 +15,7 @@ export const GoalItem: React.FC<GoalItemProps> = ({goal}) => {
     <li>
         <label className={goal.completed ? "completed": undefined}>
             <input type = "checkbox" checked = {goal.completed}/>
-            {goal.text}
+            <text>{goal.text}</text>
         </label>
     </li>
 

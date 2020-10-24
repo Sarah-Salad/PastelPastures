@@ -25,3 +25,5 @@ export type Goal = {
   text: string;
   completed: boolean;
 }
+
+export type ToggleGoal = (selectedGoal: Goal) => void;
