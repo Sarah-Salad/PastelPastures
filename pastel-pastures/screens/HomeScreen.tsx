@@ -68,8 +68,6 @@ export default function HomeScreen() {
           type='font-awesome'
           color='#f50'
           onPress={() => console.log('hello')} />
-          <div style={{ fontSize: 12, marginTop: -5 }}>
-          </div>
        
         </CircularProgressbarWithChildren>
           {<Text>Exercise</Text>}
