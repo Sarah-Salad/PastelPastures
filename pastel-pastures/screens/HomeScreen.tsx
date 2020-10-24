@@ -1,21 +1,28 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import {useState} from 'react';
+import { StyleSheet, TextInput, Button } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import  {GoalItem} from '../GoalItem'
 import { Goal } from '../types';
 
-
 const goals: Array<Goal> = [{text: "Exercise", completed: true},{text: "Take a shower", completed: false}]
 
-export default function TabOneScreen() {
+
+export default function HomeScreen() {
+
+    
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Home</Text>
+      <React.Fragment>
       <Text><GoalItem goal = {goals[0]}/></Text>
+      <Text><GoalItem goal = {goals[1]}/></Text>
+      </React.Fragment>
+      
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.js" />
+      <EditScreenInfo path="/screens/HomeScreen.js" />
     </View>
   );
 }
