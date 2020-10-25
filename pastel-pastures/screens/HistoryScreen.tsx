@@ -77,12 +77,12 @@ export default function HistoryScreen() {
               </ListItem.Content>
               <ListItem.Subtitle style={styles.subtext}>{l.completion}</ListItem.Subtitle>
             </ListItem>
-        <ListItem bottomDivider>
+        <ListItem key={i + list.length} bottomDivider>
           <ListItem.Content>
-            <ListItem style={styles.goaltext}><Icon name='check-circle-o' type='font-awesome'/>{l.goal1}</ListItem>
-            <ListItem style={styles.goaltext}><Icon name='times-circle-o' type='font-awesome'/>{l.goal2}</ListItem>
-            <ListItem style={styles.goaltext}><Icon name='check-circle-o' type='font-awesome'/>{l.goal3}</ListItem>
-            <ListItem style={styles.goaltext}><Icon name='times-circle-o' type='font-awesome'/>{l.goal4}</ListItem>
+            <ListItem.Title key = {l.goal1} style={styles.goaltext}><Icon name='check-circle-o' type='font-awesome'/>{l.goal1}</ListItem.Title>
+            <ListItem.Title key = {l.goal2} style={styles.goaltext}><Icon name='times-circle-o' type='font-awesome'/>{l.goal2}</ListItem.Title>
+            <ListItem.Title key = {l.goal3} style={styles.goaltext}><Icon name='check-circle-o' type='font-awesome'/>{l.goal3}</ListItem.Title>
+            <ListItem.Title key = {l.goal4} style={styles.goaltext}><Icon name='times-circle-o' type='font-awesome'/>{l.goal4}</ListItem.Title>
           </ListItem.Content>
         </ListItem>
         </>
