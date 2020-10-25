@@ -3,10 +3,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import CommunityScreen from '../screens/CommunityScreen';
-import HistoryScreen from '../screens/HistoryScreen';
+import Colors from "../constants/Colors";
+import useColorScheme from "../hooks/useColorScheme";
+import CommunityScreen from "../screens/CommunityScreen";
+import HistoryScreen from "../screens/HistoryScreen";
 import Profile from "../screens/Profile";
 import ManageGoalsScreen from "../screens/ManageGoalsScreen";
 import HomeScreen from "../screens/HomeScreen";
@@ -15,14 +15,13 @@ import {
     HomeScreenParamList,
     ManageGoalsParamList,
     ProfileParamList,
-    HistoryTabParamList, 
-    CommunityTabParamList
+    HistoryTabParamList,
+    CommunityTabParamList,
 } from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-
     const colorScheme = useColorScheme();
 
     return (
@@ -35,13 +34,18 @@ export default function BottomTabNavigator() {
                 component={HomeScreenNavigator}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="ios-list" color={color} />
+                        <TabBarIcon name="ios-home" color={color} />
                     ),
                 }}
             />
             <BottomTab.Screen
                 name="ManageGoals"
                 component={ManageGoalsNavigator}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="ios-create" color={color} />
+                    ),
+                }}
             ></BottomTab.Screen>
 
             <BottomTab.Screen
@@ -57,16 +61,20 @@ export default function BottomTabNavigator() {
                 name="History"
                 component={HistoryTabNavigator}
                 options={{
-                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="ios-list" color={color} />
+                    ),
                 }}
-              />
-              <BottomTab.Screen
+            />
+            <BottomTab.Screen
                 name="Community"
                 component={CommunityTabNavigator}
                 options={{
-                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="ios-people" color={color} />
+                    ),
                 }}
-              />
+            />
         </BottomTab.Navigator>
     );
 }
@@ -124,28 +132,27 @@ function HomeScreenNavigator() {
 const HistoryTabStack = createStackNavigator<HistoryTabParamList>();
 
 function HistoryTabNavigator() {
-  return (
-    <HistoryTabStack.Navigator>
-      <HistoryTabStack.Screen
-        name="HistoryScreen"
-        component={HistoryScreen}
-        options={{ headerTitle: 'History' }}
-      />
-    </HistoryTabStack.Navigator>
-  );
+    return (
+        <HistoryTabStack.Navigator>
+            <HistoryTabStack.Screen
+                name="HistoryScreen"
+                component={HistoryScreen}
+                options={{ headerTitle: "History" }}
+            />
+        </HistoryTabStack.Navigator>
+    );
 }
 
-const  CommunityTabStack = createStackNavigator<CommunityTabParamList>();
+const CommunityTabStack = createStackNavigator<CommunityTabParamList>();
 
 function CommunityTabNavigator() {
-  return (
-    <CommunityTabStack.Navigator>
-      <CommunityTabStack.Screen
-        name="CommunityScreen"
-        component={CommunityScreen}
-        options={{ headerTitle: 'Community' }}
-      />
-    </CommunityTabStack.Navigator>
-  );
+    return (
+        <CommunityTabStack.Navigator>
+            <CommunityTabStack.Screen
+                name="CommunityScreen"
+                component={CommunityScreen}
+                options={{ headerTitle: "Community" }}
+            />
+        </CommunityTabStack.Navigator>
+    );
 }
-
