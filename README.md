@@ -48,7 +48,7 @@ Community
 
 ## License
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) This project is licensed under the MIT License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) This project is licensed under the [MIT License](https://opensource.org/licenses/MIT)
 
 ## Acknowledgments
 * [KCFed Code-A-Thon](http://codeathon.kcfed.org) for offering us a wonderful opportunity to build our skills, meet with a wonderful and supportive community, and a chance to contribute to the greater good.
