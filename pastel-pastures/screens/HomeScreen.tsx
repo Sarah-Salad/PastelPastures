@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useState} from 'react';
-import { StyleSheet, FlatList, Button, SafeAreaView, Alert } from 'react-native';
+import { StyleSheet, FlatList, Button, SafeAreaView, Alert, ScrollView } from 'react-native';
 import {Overlay, ListItem, Icon, Header} from 'react-native-elements';
 
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -42,12 +42,14 @@ const goalList = [
 export default function HomeScreen({navigation}: any) {
 
   return (
+    
     <View style={styles.container}>
       <Header containerStyle={styles.header}
-        centerComponent={{text:"Time to Bloom", style: { color: '#fff', fontSize: 25}}}
+        centerComponent={{text:"Time to Bloom", style: { color: '#fff', fontSize: 25, fontFamily: "serif"}}}
         ></Header>
-  
-    <View style = {styles.list}>{
+  <Text style={styles.title}>20 BP</Text>
+  <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
+    <ScrollView style = {styles.list}>{
       goalList.map((l,i) => (
         <ListItem key={i} bottomDivider containerStyle = {l.completed ? {backgroundColor: "#033500"} : {backgroundColor:"#3d3d3d"}} onPress = {() => {
             
@@ -55,22 +57,22 @@ export default function HomeScreen({navigation}: any) {
           l.completed = !l.completed;
         }}>
           <ListItem.Content >
-          <ListItem.Title style={{color: "white"}}>{l.title}</ListItem.Title>
+          <ListItem.Title style={{color: "white", fontFamily: "serif"}}>{l.title}</ListItem.Title>
           <ListItem.Subtitle>{l.icon}</ListItem.Subtitle>
           </ListItem.Content>
           <ListItem.Chevron style = {styles.rightIcon} iconProps = {l.completed ? {name:"check", size:21} : {name:"remove", size:21}}/>
           </ListItem>
         ))
  }
-    </View>
-    <View style = {styles.list}>
+    </ScrollView>
+    <ScrollView style = {styles.list}>
       <ListItem containerStyle = {styles.listItem} onPress = {() => {
         navigation.navigate('ManageGoalsScreen')
       }} >
         <ListItem.Content>
 
   
-        <ListItem.Title style = {{color: "#fff"}}>
+        <ListItem.Title style = {{color: "#fff", fontFamily: "serif"}}>
           {"Add a New Goal"}
 
         </ListItem.Title>
@@ -87,23 +89,25 @@ export default function HomeScreen({navigation}: any) {
       </ListItem>
   
 
-    </View>
+    </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#8e80ff"
+    backgroundColor: "#3d3d3d"
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    textAlign: 'center',
+    fontFamily: 'serif',
+    padding: 15
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 0,
     height: 1,
-    width: '80%',
+    width: '100%',
   },
   centerComponent:{
     fontSize: 20,

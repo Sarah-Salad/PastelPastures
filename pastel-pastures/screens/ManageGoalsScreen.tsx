@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { Alert, StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -44,17 +44,17 @@ export default function ManageGoalsScreen({ navigation }: any) {
         leftComponent={{ icon: 'arrow-back', color: '#fff', onPress: (() => {
           navigation.navigate('HomeScreen')
         })}}
-        centerComponent={{ text: 'Add Goals', style: { color: '#fff' } }}
+        centerComponent={{ text: 'Add Goals',style: { color: '#fff', fontSize: 25, fontFamily: 'serif'} }}
         ></Header>
         <View style = {styles.list}>{
         list.map((l, i) => (
-          <ListItem key={i} bottomDivider containerStyle = {styles.listItem}>
+          <ListItem key={i} bottomDivider containerStyle = {styles.listItem} onPress = {() => {
+              Alert.alert("Goal Added", "Okay! We just added '" + l.name + "' to your goals. Taking care of yourself is the first step to improving your mindspace.");
+          }}>
           <ListItem.Content >
-            <ListItem.Title style={{color: "white"}}>{l.name}</ListItem.Title>
+            <ListItem.Title style={{color: "white", fontFamily: 'serif'}}>{l.name}</ListItem.Title>
           </ListItem.Content>
-          <ListItem.Chevron onPress = {() => {
-          
-          }} style = {styles.rightIcon} iconProps = {{name:"add", size:21}}/>
+          <ListItem.Chevron style = {styles.rightIcon} iconProps = {{name:"add", size:21}}/>
           </ListItem>
         ))
       }
@@ -62,7 +62,6 @@ export default function ManageGoalsScreen({ navigation }: any) {
       <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
       <Text style={styles.title}>Manage Goals</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/ManageGoalsScene.js" />
     </View>
   );
 }
@@ -75,6 +74,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    fontFamily: 'serif'
   },
   separator: {
     marginVertical: 30,
@@ -88,8 +88,9 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
   header:{
-    color:"black",
-    backgroundColor:"#033500"
+    color:"#033500",
+    backgroundColor: "#033500",
+    fontSize: 20
   },
   listTitle1:{
     padding: 13,
