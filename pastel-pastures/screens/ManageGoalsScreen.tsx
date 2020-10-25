@@ -44,7 +44,7 @@ export default function ManageGoalsScreen({ navigation }: any) {
         leftComponent={{ icon: 'arrow-back', color: '#fff', onPress: (() => {
           navigation.navigate('HomeScreen')
         })}}
-        centerComponent={{ text: 'Add Goals', style: { color: '#fff' } }}
+        centerComponent={{ text: 'Add Goals',style: { color: '#fff', fontSize: 25} }}
         ></Header>
         <View style = {styles.list}>{
         list.map((l, i) => (
@@ -62,7 +62,6 @@ export default function ManageGoalsScreen({ navigation }: any) {
       <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
       <Text style={styles.title}>Manage Goals</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/ManageGoalsScene.js" />
     </View>
   );
 }
@@ -88,8 +87,9 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
   },
   header:{
-    color:"black",
-    backgroundColor:"#033500"
+    color:"#033500",
+    backgroundColor: "#033500",
+    fontSize: 20
   },
   listTitle1:{
     padding: 13,

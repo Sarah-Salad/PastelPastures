@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useState} from 'react';
-import { StyleSheet, FlatList, Button, SafeAreaView, Alert } from 'react-native';
+import { StyleSheet, FlatList, Button, SafeAreaView, Alert, ScrollView } from 'react-native';
 import {Overlay, ListItem, Icon, Header} from 'react-native-elements';
 
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -42,12 +42,13 @@ const goalList = [
 export default function HomeScreen({navigation}: any) {
 
   return (
+    
     <View style={styles.container}>
       <Header containerStyle={styles.header}
         centerComponent={{text:"Time to Bloom", style: { color: '#fff', fontSize: 25}}}
         ></Header>
   
-    <View style = {styles.list}>{
+    <ScrollView style = {styles.list}>{
       goalList.map((l,i) => (
         <ListItem key={i} bottomDivider containerStyle = {l.completed ? {backgroundColor: "#033500"} : {backgroundColor:"#3d3d3d"}} onPress = {() => {
             
@@ -62,8 +63,8 @@ export default function HomeScreen({navigation}: any) {
           </ListItem>
         ))
  }
-    </View>
-    <View style = {styles.list}>
+    </ScrollView>
+    <ScrollView style = {styles.list}>
       <ListItem containerStyle = {styles.listItem} onPress = {() => {
         navigation.navigate('ManageGoalsScreen')
       }} >
@@ -87,7 +88,7 @@ export default function HomeScreen({navigation}: any) {
       </ListItem>
   
 
-    </View>
+    </ScrollView>
     </View>
   );
 }

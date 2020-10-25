@@ -27,21 +27,26 @@ export default function BottomTabNavigator() {
 
     return (
         <BottomTab.Navigator
-            initialRouteName="HomeScreen"
+            initialRouteName="Home"
             tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
         >
             <BottomTab.Screen
-                name="HomeScreen"
+                name="Home"
                 component={HomeScreenNavigator}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="ios-list" color={color} />
+                        <TabBarIcon name="ios-home" color={color} />
                     ),
                 }}
             />
             <BottomTab.Screen
-                name="ManageGoals"
+                name="AddGoals"
                 component={ManageGoalsNavigator}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="ios-add" color={color} />
+                    ),
+                }}
             ></BottomTab.Screen>
 
             <BottomTab.Screen
@@ -57,14 +62,14 @@ export default function BottomTabNavigator() {
                 name="History"
                 component={HistoryTabNavigator}
                 options={{
-                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-list" color={color} />,
                 }}
               />
               <BottomTab.Screen
                 name="Community"
                 component={CommunityTabNavigator}
                 options={{
-                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-contacts" color={color} />,
                 }}
               />
         </BottomTab.Navigator>
@@ -101,7 +106,7 @@ function ManageGoalsNavigator() {
             <ManageGoalsStack.Screen
                 name="ManageGoalsScreen"
                 component={ManageGoalsScreen}
-                options={{ headerTitle: "Manage Goals Title" }}
+                options={{ headerTitle: "Add Goals" }}
             />
         </ManageGoalsStack.Navigator>
     );
