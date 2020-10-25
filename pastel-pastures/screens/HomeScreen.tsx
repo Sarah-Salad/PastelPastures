@@ -37,7 +37,17 @@ const goalList = [
   },
 ]
 
+function getTotalBP(){
 
+  let totalBP = 0;
+  for(let i = 0; i < goalList.length; i++){
+    if(goalList[i].completed){
+      totalBP += goalList[i].bp;
+    }
+  }
+
+  return totalBP;
+}
 
 export default function HomeScreen({navigation}: any) {
 
@@ -47,7 +57,7 @@ export default function HomeScreen({navigation}: any) {
       <Header containerStyle={styles.header}
         centerComponent={{text:"Time to Bloom", style: { color: '#fff', fontSize: 25, fontFamily: "serif"}}}
         ></Header>
-  <Text style={styles.title}>20 BP</Text>
+  <Text style={styles.title}>{getTotalBP()} BP</Text>
   <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
     <ScrollView style = {styles.list}>{
       goalList.map((l,i) => (
