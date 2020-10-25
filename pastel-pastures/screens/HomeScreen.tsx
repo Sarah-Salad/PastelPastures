@@ -13,6 +13,7 @@ const goalList = [
   {
     title: 'Do an Exercise Routine',
     completed: false,
+    mp: 15,
     icon: <Icon name='heartbeat'
     type='font-awesome'
     color='#f60'/>
@@ -20,6 +21,7 @@ const goalList = [
   {
     title: 'Meditate for 10 minutes',
     completed: true,
+    mp: 10,
     icon: <Icon name='odnoklassniki'
     type='font-awesome'
     color='#aad9fa'/>
@@ -27,6 +29,7 @@ const goalList = [
   {
     title: 'Get enough sleep',
     completed: false,
+    mp: 10,
     icon: <Icon name='moon-o'
     type='font-awesome'
     color='#8e80ff'/>
@@ -49,7 +52,8 @@ export default function HomeScreen({navigation}: any) {
           <ListItem.Subtitle>{l.icon}</ListItem.Subtitle>
           </ListItem.Content>
           <ListItem.Chevron onPress = {() => {
-            alert('Great job!');
+            
+            alert(!l.completed ? 'Great job! You just earned ' + l.mp + " Mindfulness Points": "You're doing a great job");
             l.completed = !l.completed;
           }} style = {styles.rightIcon} iconProps = {l.completed ? {name:"check", size:21} : {name:"remove", size:21}}/>
           </ListItem>
