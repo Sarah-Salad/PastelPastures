@@ -57,14 +57,14 @@ export default function BottomTabNavigator() {
                 name="History"
                 component={HistoryTabNavigator}
                 options={{
-                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-stats" color={color} />,
                 }}
               />
               <BottomTab.Screen
                 name="Community"
                 component={CommunityTabNavigator}
                 options={{
-                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-contacts" color={color} />,
                 }}
               />
         </BottomTab.Navigator>
