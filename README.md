@@ -30,7 +30,7 @@ $ npm start
 
 ## Authors
 
-* **Bryan Valenciaga** - [nchendev](https://github.com/nchendev)
+* **Bryan Valenciaga** -
 * **Cameron Walker** - [cwalker012](https://github.com/cwalker012)
 * **Lucas Pham** - [luangia](https://github.com/luangia)
 * **Sarah Lester** - [selester12](https://github.com/selester12)
