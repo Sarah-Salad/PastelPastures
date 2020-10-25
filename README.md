@@ -21,6 +21,9 @@ Start the app:
 ```sh
 $ npm start
 ```
+
+Install Expo App for [iOS](https://apps.apple.com/us/app/expo-client/id982107779) and [Android](https://play.google.com/store/apps/details?id=host.exp.exponent) 
+
 To run the app with live reloading, choose one of:
 * Scan the QR code above with the Expo app (Android) or the Camera app (iOS).
 * Press **a** for Android emulator, or **w** to run on web.
@@ -41,7 +44,7 @@ To run the app with live reloading, choose one of:
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) This project is licensed under the MIT License
 
 ## Acknowledgments
 * [KCFed Code-A-Thon](http://codeathon.kcfed.org) for offering us a wonderful opportunity to build our skills, meet with a wonderful and supportive community, and a chance to contribute to the greater good.
