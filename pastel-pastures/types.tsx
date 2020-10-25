@@ -7,6 +7,7 @@ export type BottomTabParamList = {
   TabOne: undefined;
   TabTwo: undefined;
   ManageGoals: undefined;
+  HomeScreen: undefined;
 };
 
 export type TabOneParamList = {
@@ -20,3 +21,13 @@ export type TabTwoParamList = {
 export type ManageGoalsParamList = {
   ManageGoalsScreen: undefined;
 }
+export type HomeScreenParamList = {
+  HomeScreen: undefined;
+}
+
+export type Goal = {
+  text: string;
+  completed: boolean;
+}
+
+export type ToggleGoal = (selectedGoal: Goal) => void;

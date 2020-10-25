@@ -7,8 +7,10 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+
 import ManageGoalsScreen from '../screens/ManageGoalsScreen'
-import { BottomTabParamList, TabOneParamList, TabTwoParamList, ManageGoalsParamList } from '../types';
+import HomeScreen from '../screens/HomeScreen';
+import { BottomTabParamList, HomeScreenParamList, TabOneParamList, TabTwoParamList, ManageGoalsParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -17,8 +19,15 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="HomeScreen"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      <BottomTab.Screen
+        name="HomeScreen"
+        component={HomeScreenNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
       <BottomTab.Screen
         name="TabOne"
         component={TabOneNavigator}
@@ -33,10 +42,12 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
+
       <BottomTab.Screen
         name="ManageGoals"
         component = {ManageGoalsNavigator}
         ></BottomTab.Screen>
+      
     </BottomTab.Navigator>
   );
 }
@@ -77,6 +88,7 @@ function TabTwoNavigator() {
   );
 }
 
+
 const ManageGoalsStack = createStackNavigator<ManageGoalsParamList>();
 
 function ManageGoalsNavigator() {
@@ -91,3 +103,16 @@ function ManageGoalsNavigator() {
   );
 }
 
+const HomeScreenStack = createStackNavigator<HomeScreenParamList>();
+
+function HomeScreenNavigator() {
+  return (
+    <HomeScreenStack.Navigator>
+      <HomeScreenStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ headerTitle: 'Dashboard' }}
+      />
+    </HomeScreenStack.Navigator>
+  );
+}
