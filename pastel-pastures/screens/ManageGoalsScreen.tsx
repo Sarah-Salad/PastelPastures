@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     },
     header: {
         color: "black",
-        backgroundColor: "#033500",
+        backgroundColor: "#609433",
     },
     listTitle1: {
         padding: 13,
@@ -106,6 +106,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     listItem: {
-        backgroundColor: "#3d3d3d",
+        backgroundColor: "#000",
     },
 });

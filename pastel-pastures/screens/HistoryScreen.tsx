@@ -68,7 +68,10 @@ export default function HistoryScreen() {
         <ScrollView>
             {list.map((l, i) => (
                 <React.Fragment key={i}>
-                    <ListItem containerStyle={styles.listItem} bottomDivider>
+                    <ListItem
+                        containerStyle={styles.timeContainer}
+                        bottomDivider
+                    >
                         <ListItem.Content>
                             <ListItem.Title style={styles.title}>
                                 {l.timeframe}
@@ -133,6 +136,9 @@ export default function HistoryScreen() {
 }
 
 const styles = StyleSheet.create({
+    timeContainer: {
+        backgroundColor: "#609433",
+    },
     container: {
         flex: 1,
         alignItems: "flex-start",
@@ -151,8 +157,7 @@ const styles = StyleSheet.create({
         color: "#c4c4c4",
     },
     listItem: {
-        color: "#3d3d3d",
-        backgroundColor: "#3d3d3d",
+        backgroundColor: "#000",
     },
     separator: {
         marginVertical: 3,

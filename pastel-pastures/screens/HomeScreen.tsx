@@ -55,8 +55,8 @@ export default function HomeScreen({ navigation }: any) {
                         bottomDivider
                         containerStyle={
                             l.completed
-                                ? { backgroundColor: "#033500" }
-                                : { backgroundColor: "#3d3d3d" }
+                                ? { backgroundColor: "#609433" }
+                                : { backgroundColor: "#000" }
                         }
                         onPress={() => {
                             Alert.alert(
@@ -123,14 +123,14 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     list: {
-        backgroundColor: "#033500",
+        backgroundColor: "#609433",
     },
     rightIcon: {
         alignSelf: "flex-end",
     },
     header: {
         color: "#033500",
-        backgroundColor: "#033500",
+        backgroundColor: "#609433",
         fontSize: 20,
     },
     listTitle1: {
@@ -139,6 +139,6 @@ const styles = StyleSheet.create({
         alignSelf: "center",
     },
     listItem: {
-        backgroundColor: "#3d3d3d",
+        backgroundColor: "#000",
     },
 });
