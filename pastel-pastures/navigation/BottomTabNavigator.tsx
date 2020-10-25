@@ -109,7 +109,7 @@ function ManageGoalsNavigator() {
             <ManageGoalsStack.Screen
                 name="ManageGoalsScreen"
                 component={ManageGoalsScreen}
-                options={{ headerTitle: "Manage Goals Title" }}
+                options={{ headerTitle: "Manage Goals" }}
             />
         </ManageGoalsStack.Navigator>
     );

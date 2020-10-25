@@ -70,11 +70,11 @@ export default function HomeScreen({ navigation }: any) {
                             l.completed = !l.completed;
                         }}
                     >
+                        {l.icon}
                         <ListItem.Content>
                             <ListItem.Title style={{ color: "white" }}>
                                 {l.title}
                             </ListItem.Title>
-                            <ListItem.Subtitle>{l.icon}</ListItem.Subtitle>
                         </ListItem.Content>
                         <ListItem.Chevron
                             style={styles.rightIcon}
@@ -94,19 +94,11 @@ export default function HomeScreen({ navigation }: any) {
                         navigation.navigate("ManageGoalsScreen");
                     }}
                 >
+                    {<Icon name="plus" type="font-awesome" color="#3b7a31" />}
                     <ListItem.Content>
                         <ListItem.Title style={{ color: "#fff" }}>
                             {"Add a New Goal"}
                         </ListItem.Title>
-                        <ListItem.Subtitle>
-                            {
-                                <Icon
-                                    name="plus"
-                                    type="font-awesome"
-                                    color="#3b7a31"
-                                />
-                            }
-                        </ListItem.Subtitle>
                     </ListItem.Content>
                 </ListItem>
             </View>

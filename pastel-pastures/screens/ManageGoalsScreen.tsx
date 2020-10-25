@@ -73,18 +73,6 @@ export default function ManageGoalsScreen({ navigation }: any) {
                     </ListItem>
                 ))}
             </View>
-            <View
-                style={styles.separator}
-                lightColor="#eee"
-                darkColor="rgba(255,255,255,0.1)"
-            />
-            <Text style={styles.title}>Manage Goals</Text>
-            <View
-                style={styles.separator}
-                lightColor="#eee"
-                darkColor="rgba(255,255,255,0.1)"
-            />
-            <EditScreenInfo path="/screens/ManageGoalsScene.js" />
         </View>
     );
 }
