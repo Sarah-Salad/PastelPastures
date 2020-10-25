@@ -58,7 +58,7 @@ class Storage extends Component{
             try{
                 await AsyncStorage.setItem('BP', BP)
                 this.setState({'BP': BP});
-            }catch(error){console.log(error)};
+            } catch(error){console.log(error)};
         })();
     }
 

@@ -8,42 +8,50 @@ import { ListItem, Avatar} from 'react-native-elements';
 import { AsyncStorage } from 'react-native';
 import Storage from '../storage/Storage';
 
-var goalsArray;
+var goalsArray: Array<any>;
 AsyncStorage.clear();
-console.log("pre async");
 (async() =>{
   console.log("started async");
   try{
-    await AsyncStorage.setItem('Goals', JSON.stringify([
+    await AsyncStorage.setItem('goals', JSON.stringify([
       {name: 'Take a walk', BP: 10, completed: false},
       {name: 'Take a shower', BP: 5, completed: false},
-      {name: 'Do an exercise routine', BP: 15, completed: false}
+      {name: 'Do an exercise routine', BP: 15, completed: false},
+      {name: 'Read for an hour', BP: 10, completed: false}
     ]))
-    var goalsArrayString = await AsyncStorage.getItem('Goals');
+    var goalsArrayString = await AsyncStorage.getItem('goals');
     if (goalsArrayString !== null){
       console.log(goalsArrayString);
       goalsArray = JSON.parse(goalsArrayString);
     }
   } catch(error){
-    console.log()
+    console.log(error)
   }
 })();
 
-const list = [
-  {
-    name:'Take a walk',
-  },
-  {
-    name:"Take a Shower",
-  },
-  {
-    name:"Do an Exercise routine",
-  },
-  {
-    name:"Read for an hour",
-  }
+function MatchingName(name:string) {
+  return((element:any) => element.name === name);
+}
 
-]
+function AddToUserGoals(name: string){
+  var goalIndex = goalsArray.findIndex(MatchingName(name));
+  var goal = goalsArray.splice(goalIndex);
+  (async() =>{
+    try{
+      var userGoalsArrayString = await AsyncStorage.getItem('UserGoals');
+      if(userGoalsArrayString !== null){
+        var userGoalsArray = JSON.parse(userGoalsArrayString);
+        userGoalsArray.push(goal);
+        userGoalsArrayString = JSON.stringify(userGoalsArray);
+        await AsyncStorage.setItem('UserGoals', userGoalsArrayString);
+        const newArray = await AsyncStorage.getItem('userGoals');
+        console.log(newArray);
+      }
+    } catch(error){
+      console.log(error)
+    }
+  })();
+}
 
 export default function ManageGoalsScreen({ navigation }: any) {
   return (
@@ -55,13 +63,13 @@ export default function ManageGoalsScreen({ navigation }: any) {
         centerComponent={{ text: 'Add Goals', style: { color: '#fff' } }}
         ></Header>
         <View style = {styles.list}>{
-        list.map((l, i) => (
+        goalsArray.map((l, i) => (
           <ListItem key={i} bottomDivider containerStyle = {styles.listItem}>
           <ListItem.Content >
             <ListItem.Title style={{color: "white"}}>{l.name}</ListItem.Title>
           </ListItem.Content>
           <ListItem.Chevron onPress = {() => {
-          
+            AddToUserGoals(l.name);
           }} style = {styles.rightIcon} iconProps = {{name:"add", size:21}}/>
           </ListItem>
         ))
