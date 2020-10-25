@@ -6,11 +6,22 @@ export default {
     screens: {
       Root: {
         screens: {
+          Home: {
+            screens: {
+              HomeScreen: 'home',
+            }
+          },
+          Profile: {
+            screens: {
+              Profile: 'profile',
+            },
+          },
           TabOne: {
             screens: {
               TabOneScreen: 'one',
             },
           },
+
           TabTwo: {
             screens: {
               TabTwoScreen: 'two',
@@ -24,6 +35,9 @@ export default {
           CommunityTab: {
             screens: {
               CommunityScreen: 'community',
+          ManageGoals:{
+            screens:{
+              ManageGoalsScreen: 'manage',
             },
           },
         },

@@ -1,21 +1,30 @@
 export type RootStackParamList = {
-  Root: undefined;
-  NotFound: undefined;
+    Root: undefined;
+    NotFound: undefined;
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
-  History: undefined;
-  Community: undefined;
-};
-
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+    Profile: undefined;
+    TabOne: undefined;
+    TabTwo: undefined;
+    ManageGoals: undefined;
+    HomeScreen: undefined;
+    History: undefined;
+    Community: undefined;
 };
 
 export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+    TabTwoScreen: undefined;
+};
+export type TabOneParamList = {
+    TabOneScreen: undefined;
+};
+
+export type ManageGoalsParamList = {
+    ManageGoalsScreen: undefined;
+};
+export type HomeScreenParamList = {
+    HomeScreen: undefined;
 };
 
 export type HistoryTabParamList = {
@@ -25,3 +34,13 @@ export type HistoryTabParamList = {
 export type CommunityTabParamList = {
   CommunityScreen: undefined;
 };
+export type ProfileParamList = {
+    Profile: undefined;
+};
+
+export type Goal = {
+    text: string;
+    completed: boolean;
+};
+
+export type ToggleGoal = (selectedGoal: Goal) => void;
