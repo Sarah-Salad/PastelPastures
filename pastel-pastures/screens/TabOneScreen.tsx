@@ -3,6 +3,11 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import  {GoalItem} from '../GoalItem'
+import { Goal } from '../types';
+
+
+const goals: Array<Goal> = [{text: "Exercise", completed: true},{text: "Take a shower", completed: false}]
 
 export default function TabOneScreen() {
   return (
