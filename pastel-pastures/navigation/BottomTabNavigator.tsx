@@ -35,7 +35,7 @@ export default function BottomTabNavigator() {
                 component={HomeScreenNavigator}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="ios-code" color={color} />
+                        <TabBarIcon name="ios-list" color={color} />
                     ),
                 }}
             />
