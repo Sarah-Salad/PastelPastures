@@ -7,8 +7,10 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+
+import ManageGoalsScreen from '../screens/ManageGoalsScreen'
 import HomeScreen from '../screens/HomeScreen';
-import { BottomTabParamList, HomeScreenParamList, TabOneParamList, TabTwoParamList } from '../types';
+import { BottomTabParamList, HomeScreenParamList, TabOneParamList, TabTwoParamList, ManageGoalsParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -40,6 +42,11 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
+
+      <BottomTab.Screen
+        name="ManageGoals"
+        component = {ManageGoalsNavigator}
+        ></BottomTab.Screen>
       
     </BottomTab.Navigator>
   );
@@ -78,6 +85,21 @@ function TabTwoNavigator() {
         options={{ headerTitle: 'Tab Two Title' }}
       />
     </TabTwoStack.Navigator>
+  );
+}
+
+
+const ManageGoalsStack = createStackNavigator<ManageGoalsParamList>();
+
+function ManageGoalsNavigator() {
+  return (
+    <ManageGoalsStack.Navigator>
+      <ManageGoalsStack.Screen
+        name ="ManageGoalsScreen"
+        component={ManageGoalsScreen}
+        options={{ headerTitle: 'Manage Goals Title' }}
+      />
+    </ManageGoalsStack.Navigator>
   );
 }
 
