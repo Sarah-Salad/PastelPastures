@@ -8,6 +8,7 @@ import { Text, View } from '../components/Themed';
 import  {GoalItem} from '../GoalItem'
 import { Goal, ToggleGoal } from '../types';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import { coolDownAsync } from 'expo-web-browser';
 
 const goalList = [
   {
@@ -36,6 +37,8 @@ const goalList = [
   },
 ]
 
+
+
 export default function HomeScreen({navigation}: any) {
 
   return (
@@ -46,16 +49,16 @@ export default function HomeScreen({navigation}: any) {
   
     <View style = {styles.list}>{
       goalList.map((l,i) => (
-        <ListItem key={i} bottomDivider containerStyle = {l.completed ? {backgroundColor: "#033500"} : {backgroundColor:"#3d3d3d"}}>
+        <ListItem key={i} bottomDivider containerStyle = {l.completed ? {backgroundColor: "#033500"} : {backgroundColor:"#3d3d3d"}} onPress = {() => {
+            
+          Alert.alert("I'm proud of you", !l.completed ? 'Great job! You just earned ' + l.bp + " Bloom Points": "You're doing a great job");
+          l.completed = !l.completed;
+        }}>
           <ListItem.Content >
           <ListItem.Title style={{color: "white"}}>{l.title}</ListItem.Title>
           <ListItem.Subtitle>{l.icon}</ListItem.Subtitle>
           </ListItem.Content>
-          <ListItem.Chevron onPress = {() => {
-            
-            alert(!l.completed ? 'Great job! You just earned ' + l.bp + " Bloom Points": "You're doing a great job");
-            l.completed = !l.completed;
-          }} style = {styles.rightIcon} iconProps = {l.completed ? {name:"check", size:21} : {name:"remove", size:21}}/>
+          <ListItem.Chevron style = {styles.rightIcon} iconProps = {l.completed ? {name:"check", size:21} : {name:"remove", size:21}}/>
           </ListItem>
         ))
  }
