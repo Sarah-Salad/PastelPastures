@@ -16,17 +16,6 @@ export default {
               Profile: 'profile',
             },
           },
-          TabOne: {
-            screens: {
-              TabOneScreen: 'one',
-            },
-          },
-
-          TabTwo: {
-            screens: {
-              TabTwoScreen: 'two',
-            },
-          },
           HistoryTab: {
             screens: {
               HistoryScreen: 'history',
@@ -40,7 +29,7 @@ export default {
           ManageGoals:{
             screens:{
               ManageGoalsScreen: 'manage',
-            },
+          },
         },
       },
     },

@@ -44,25 +44,6 @@ export default function BottomTabNavigator() {
                 }}
             />
             <BottomTab.Screen
-                name="TabOne"
-                component={TabOneNavigator}
-                options={{
-                    tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="ios-code" color={color} />
-                    ),
-                }}
-            />
-            <BottomTab.Screen
-                name="TabTwo"
-                component={TabTwoNavigator}
-                options={{
-                    tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="ios-code" color={color} />
-                    ),
-                }}
-            />
-
-            <BottomTab.Screen
                 name="ManageGoals"
                 component={ManageGoalsNavigator}
             ></BottomTab.Screen>
@@ -113,34 +94,6 @@ function ProfileNavigator() {
                 options={{ headerTitle: "Profile" }}
             />
         </ProfileStack.Navigator>
-    );
-}
-
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
-
-function TabTwoNavigator() {
-    return (
-        <TabTwoStack.Navigator>
-            <TabTwoStack.Screen
-                name="TabTwoScreen"
-                component={TabTwoScreen}
-                options={{ headerTitle: "Tab Two Title" }}
-            />
-        </TabTwoStack.Navigator>
-    );
-}
-
-const TabOneStack = createStackNavigator<TabOneParamList>();
-
-function TabOneNavigator() {
-    return (
-        <TabOneStack.Navigator>
-            <TabOneStack.Screen
-                name="TabOneScreen"
-                component={TabOneScreen}
-                options={{ headerTitle: "Tab One Title" }}
-            />
-        </TabOneStack.Navigator>
     );
 }
 

@@ -103,12 +103,12 @@ const styles = StyleSheet.create({
   goaltext: {
     alignItems: "flex-start",
     fontSize: 16,
-    color: 'dark-gray'
+    color: '#3d3d3d'
   },
   subtext: {
     alignItems: "flex-end",
     fontSize: 16,
-    color: 'dark-gray'
+    color: '#3d3d3d'
   },
   separator: {
     marginVertical: 30,
