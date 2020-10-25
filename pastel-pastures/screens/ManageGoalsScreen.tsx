@@ -6,6 +6,7 @@ import { Text, View } from '../components/Themed';
 import { Header } from 'react-native-elements';
 import { ListItem, Avatar} from 'react-native-elements';
 
+
 const list = [
   {
     name:'Take a walk',
@@ -26,11 +27,13 @@ const list = [
 
 ]
 
-export default function ManageGoalsScreen() {
+export default function ManageGoalsScreen({ navigation }: any) {
   return (
     <View style={styles.container}>
       <Header containerStyle={styles.header}
-        leftComponent={{ icon: 'arrow-back', color: '#fff' }}
+        leftComponent={{ icon: 'arrow-back', color: '#fff', onPress: (() => {
+          navigation.navigate('HomeScreen')
+        })}}
         centerComponent={{ text: 'Manage Goals', style: { color: '#fff' } }}
         ></Header>
         <View style = {styles.list}>{
@@ -41,7 +44,7 @@ export default function ManageGoalsScreen() {
           <ListItem.Subtitle style={{color: "#c4c4c4"}}>{l.subtitle}</ListItem.Subtitle>
           </ListItem.Content>
           <ListItem.Chevron onPress = {() => {
-            alert('Tapped');
+          
           }} style = {styles.rightIcon} iconProps = {{name:"add", size:21}}/>
           </ListItem>
         ))
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
   },
   header:{
     color:"black",
-    backgroundColor:"black"
+    backgroundColor:"#033500"
   },
   listTitle1:{
     padding: 13,
