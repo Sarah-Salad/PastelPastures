@@ -3,12 +3,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
+import CommunityScreen from '../screens/CommunityScreen';
+import HistoryScreen from '../screens/HistoryScreen';
+import TabOneScreen from '../screens/TabOneScreen';
+import TabTwoScreen from '../screens/TabTwoScreen';
 import Profile from "../screens/Profile";
-
 import ManageGoalsScreen from "../screens/ManageGoalsScreen";
 import HomeScreen from "../screens/HomeScreen";
 import {
@@ -18,11 +19,14 @@ import {
     TabTwoParamList,
     ManageGoalsParamList,
     ProfileParamList,
+    HistoryTabParamList, 
+    CommunityTabParamList
 } from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
+
     const colorScheme = useColorScheme();
 
     return (
@@ -72,6 +76,20 @@ export default function BottomTabNavigator() {
                     ),
                 }}
             />
+            <BottomTab.Screen
+                name="History"
+                component={HistoryTabNavigator}
+                options={{
+                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+                }}
+              />
+              <BottomTab.Screen
+                name="Community"
+                component={CommunityTabNavigator}
+                options={{
+                  tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+                }}
+              />
         </BottomTab.Navigator>
     );
 }
@@ -153,3 +171,32 @@ function HomeScreenNavigator() {
         </HomeScreenStack.Navigator>
     );
 }
+
+const HistoryTabStack = createStackNavigator<HistoryTabParamList>();
+
+function HistoryTabNavigator() {
+  return (
+    <HistoryTabStack.Navigator>
+      <HistoryTabStack.Screen
+        name="HistoryScreen"
+        component={HistoryScreen}
+        options={{ headerTitle: 'History' }}
+      />
+    </HistoryTabStack.Navigator>
+  );
+}
+
+const  CommunityTabStack = createStackNavigator<CommunityTabParamList>();
+
+function CommunityTabNavigator() {
+  return (
+    <CommunityTabStack.Navigator>
+      <CommunityTabStack.Screen
+        name="CommunityScreen"
+        component={CommunityScreen}
+        options={{ headerTitle: 'Community' }}
+      />
+    </CommunityTabStack.Navigator>
+  );
+}
+

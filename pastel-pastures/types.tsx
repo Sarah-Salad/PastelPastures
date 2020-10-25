@@ -9,6 +9,8 @@ export type BottomTabParamList = {
     TabTwo: undefined;
     ManageGoals: undefined;
     HomeScreen: undefined;
+    History: undefined;
+    Community: undefined;
 };
 
 export type TabTwoParamList = {
@@ -23,6 +25,14 @@ export type ManageGoalsParamList = {
 };
 export type HomeScreenParamList = {
     HomeScreen: undefined;
+};
+
+export type HistoryTabParamList = {
+  HistoryScreen: undefined;
+};
+
+export type CommunityTabParamList = {
+  CommunityScreen: undefined;
 };
 export type ProfileParamList = {
     Profile: undefined;
