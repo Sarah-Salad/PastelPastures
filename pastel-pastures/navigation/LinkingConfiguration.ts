@@ -9,7 +9,7 @@ export default {
           Home: {
             screens: {
               HomeScreen: 'home',
-            }
+            },
           },
           Profile: {
             screens: {
@@ -35,13 +35,15 @@ export default {
           CommunityTab: {
             screens: {
               CommunityScreen: 'community',
+          },
+        },
           ManageGoals:{
             screens:{
               ManageGoalsScreen: 'manage',
             },
-          },
         },
       },
+    },
       NotFound: '*',
     },
   },
