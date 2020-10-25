@@ -7,7 +7,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import  {GoalItem} from '../GoalItem'
 import { Goal, ToggleGoal } from '../types';
-import {CircularProgressbar, CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 const initialGoals: Array<Goal> = [{text: "Exercise", completed: true},{text: "Take a shower", completed: false}]
 const goalList = [
   {
@@ -58,20 +58,9 @@ export default function HomeScreen() {
  
       <View>
         <Text style={styles.title}>Take a moment for yourself...</Text>
-        </View>
-      <View>
-        <CircularProgressbarWithChildren value={66}> 
 
-       <Icon
-          raised
-          name='heartbeat'
-          type='font-awesome'
-          color='#f50'
-          onPress={() => console.log('hello')} />
-       
-        </CircularProgressbarWithChildren>
-          {<Text>Exercise</Text>}
-      </View>    
+                </View>
+
 <View>
   {
     goalList.map((item, i) => (
@@ -122,7 +111,7 @@ export default function HomeScreen() {
           onPress={() => console.log('hello')} />
         </View> */}
 
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+        <View style={styles.separator} lightColor="#eee" darkColor="#252625" />
         <EditScreenInfo path="/screens/HomeScreen.js" />
     </SafeAreaView>
   );
