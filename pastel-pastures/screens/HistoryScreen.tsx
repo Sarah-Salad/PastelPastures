@@ -119,21 +119,25 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
+    fontFamily: "serif",
     color: 'white'
   },
   goaltext: {
     textAlignVertical: 'center',
     fontSize: 18,
+    fontFamily: 'serif',
     color: '#d9d9d9'
   },
   subtext: {
     alignItems: "flex-end",
     fontSize: 16,
-    color: '#c4c4c4'
+    color: '#c4c4c4',
+    fontFamily: "serif"
   },
   listItem:{
     color: '#3d3d3d',
-    backgroundColor:"#3d3d3d"
+    backgroundColor:"#3d3d3d",
+    fontFamily: 'serif'
   },
   separator: {
     marginVertical: 3,

@@ -1,3 +1,4 @@
+import { processFontFamily } from "expo-font";
 import * as React from "react";
 import { StyleSheet, Image, ImageBackground } from "react-native";
 import { Card, Icon } from "react-native-elements";
@@ -34,7 +35,7 @@ export default function Profile() {
 
             <View>
                 <Card>
-                    <Card.Title>Badges</Card.Title>
+                    <Card.Title style={{fontFamily: 'serif'}}>Badges</Card.Title>
                     <Card.Divider />
                     <View style={styles.badges}>
                         {badges.map((b, i) => {
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: "600",
         textAlign: "center",
+        fontFamily: 'serif'
     },
     header: {
         backgroundColor: "#033500",
@@ -106,6 +108,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         paddingBottom: 8,
         textAlign: "center",
+        fontFamily: 'serif'
     },
     separator: {
         marginVertical: 30,

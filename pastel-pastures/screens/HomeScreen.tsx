@@ -45,7 +45,7 @@ export default function HomeScreen({navigation}: any) {
     
     <View style={styles.container}>
       <Header containerStyle={styles.header}
-        centerComponent={{text:"Time to Bloom", style: { color: '#fff', fontSize: 25}}}
+        centerComponent={{text:"Time to Bloom", style: { color: '#fff', fontSize: 25, fontFamily: "serif"}}}
         ></Header>
   
     <ScrollView style = {styles.list}>{
@@ -56,7 +56,7 @@ export default function HomeScreen({navigation}: any) {
           l.completed = !l.completed;
         }}>
           <ListItem.Content >
-          <ListItem.Title style={{color: "white"}}>{l.title}</ListItem.Title>
+          <ListItem.Title style={{color: "white", fontFamily: "serif"}}>{l.title}</ListItem.Title>
           <ListItem.Subtitle>{l.icon}</ListItem.Subtitle>
           </ListItem.Content>
           <ListItem.Chevron style = {styles.rightIcon} iconProps = {l.completed ? {name:"check", size:21} : {name:"remove", size:21}}/>
@@ -71,7 +71,7 @@ export default function HomeScreen({navigation}: any) {
         <ListItem.Content>
 
   
-        <ListItem.Title style = {{color: "#fff"}}>
+        <ListItem.Title style = {{color: "#fff", fontFamily: "serif"}}>
           {"Add a New Goal"}
 
         </ListItem.Title>

@@ -44,7 +44,7 @@ export default function ManageGoalsScreen({ navigation }: any) {
         leftComponent={{ icon: 'arrow-back', color: '#fff', onPress: (() => {
           navigation.navigate('HomeScreen')
         })}}
-        centerComponent={{ text: 'Add Goals',style: { color: '#fff', fontSize: 25} }}
+        centerComponent={{ text: 'Add Goals',style: { color: '#fff', fontSize: 25, fontFamily: 'serif'} }}
         ></Header>
         <View style = {styles.list}>{
         list.map((l, i) => (
@@ -52,7 +52,7 @@ export default function ManageGoalsScreen({ navigation }: any) {
               Alert.alert("Goal Added", "Okay! We just added '" + l.name + "' to your goals. Taking care of yourself is the first step to improving your mindspace.");
           }}>
           <ListItem.Content >
-            <ListItem.Title style={{color: "white"}}>{l.name}</ListItem.Title>
+            <ListItem.Title style={{color: "white", fontFamily: 'serif'}}>{l.name}</ListItem.Title>
           </ListItem.Content>
           <ListItem.Chevron style = {styles.rightIcon} iconProps = {{name:"add", size:21}}/>
           </ListItem>
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    fontFamily: 'serif'
   },
   separator: {
     marginVertical: 30,
