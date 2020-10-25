@@ -1,6 +1,6 @@
 # Bloom App - PastelPastures
 This app allows you to set daily goals for yourself in order to maintain a good mental health throughout the day, whether it be doing your chores or giving yourself a healthy break from work. Using the Community tab, you can see what you and your friends have completed. Along with a leaderboard, you can gain badges to motivate you to achieve your goals. Social distancing is hard and we hope with the support of Bloom you can keep you mind uncluttered and healthy throughout the week :)
-![Image of Bloom](https://github.com/selester12/PastelPastures/blob/main/pastel-pastures/assets/images/splash.png | width=100)
+![Image of Bloom](https://github.com/selester12/PastelPastures/blob/main/pastel-pastures/assets/images/splash.png){:height="50%" width="50%"}
 
 ## For developers
 
