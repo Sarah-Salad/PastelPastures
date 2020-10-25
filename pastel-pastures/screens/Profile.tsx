@@ -7,7 +7,7 @@ const badges = [
     { name: "place", color: "#00aced" },
     { name: "star", color: "#517fa4" },
     { name: "album", color: "#f50" },
-    { name: "games" },
+    { name: "games", color: "#000" },
 ];
 
 export default function Profile() {
