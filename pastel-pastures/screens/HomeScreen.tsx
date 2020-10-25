@@ -96,8 +96,8 @@ export default function HomeScreen({ navigation }: any) {
                             style={styles.rightIcon}
                             iconProps={
                                 l.completed
-                                    ? { name: "md-checkmark", size: 21 }
-                                    : { name: "md-trash", size: 21 }
+                                    ? { name: "check", size: 21 }
+                                    : { name: "remove", size: 21 }
                             }
                         />
                     </ListItem>

@@ -7,6 +7,7 @@ import { Header } from "react-native-elements";
 import { ListItem, Avatar } from "react-native-elements";
 import { AsyncStorage } from "react-native";
 import Storage from "../storage/Storage";
+import { Alert } from "react-native";
 
 <Storage />;
 console.log("pre async");
@@ -41,16 +42,9 @@ export default function ManageGoalsScreen({ navigation }: any) {
         <View style={styles.container}>
             <Header
                 containerStyle={styles.header}
-                leftComponent={{
-                    icon: "arrow-back",
-                    color: "#fff",
-                    onPress: () => {
-                        navigation.navigate("HomeScreen");
-                    },
-                }}
                 centerComponent={{
                     text: "Add Goals",
-                    style: { color: "#fff" },
+                    style: { color: "#fff" ,fontSize: 25, fontFamily: 'serif'},
                 }}
             ></Header>
             <View style={styles.list}>
@@ -59,16 +53,17 @@ export default function ManageGoalsScreen({ navigation }: any) {
                         key={i}
                         bottomDivider
                         containerStyle={styles.listItem}
-                    >
+                        onPress = {() => {
+                            Alert.alert("Goal Added", "Okay! We just added '" + l.name + "' to your goals. Taking care of yourself is the first step to improving your mindspace.");
+                        }}>
                         <ListItem.Content>
-                            <ListItem.Title style={{ color: "white" }}>
+                            <ListItem.Title style={{ color: "white", fontFamily: 'serif' }}>
                                 {l.name}
                             </ListItem.Title>
                         </ListItem.Content>
                         <ListItem.Chevron
-                            onPress={() => {}}
                             style={styles.rightIcon}
-                            iconProps={{ name: "ios-add", size: 21 }}
+                            iconProps ={{ name: "add", size: 21 }}
                         />
                     </ListItem>
                 ))}
@@ -84,6 +79,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: "bold",
+        fontFamily: 'serif'
     },
     separator: {
         marginVertical: 30,
