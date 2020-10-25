@@ -7,16 +7,12 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import CommunityScreen from '../screens/CommunityScreen';
 import HistoryScreen from '../screens/HistoryScreen';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
 import Profile from "../screens/Profile";
 import ManageGoalsScreen from "../screens/ManageGoalsScreen";
 import HomeScreen from "../screens/HomeScreen";
 import {
     BottomTabParamList,
     HomeScreenParamList,
-    TabOneParamList,
-    TabTwoParamList,
     ManageGoalsParamList,
     ProfileParamList,
     HistoryTabParamList, 
