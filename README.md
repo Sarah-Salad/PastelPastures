@@ -11,7 +11,7 @@ $ git clone https://github.com/selester12/PastelPastures.git
 $ cd PastelPastures/pastel-pastures
 ```
 
-Install project dependencies:
+Install project dependencies: (Grab a drink and make yourself comfortable because this might take a couple of minutes)
 
 ```sh
 $ npm install
@@ -21,7 +21,10 @@ Start the app:
 ```sh
 $ npm start
 ```
-
+To run the app with live reloading, choose one of:
+* Scan the QR code above with the Expo app (Android) or the Camera app (iOS).
+* Press **a** for Android emulator, or **w** to run on web.
+* Press **e** to send a link to your phone with email.
 
 ## Built With
 
@@ -30,7 +33,7 @@ $ npm start
 
 ## Authors
 
-* **Bryan Valencia** -
+* **Bryan Valencia** - [bvalencia002](https://github.com/bvalencia002)
 * **Cameron Walker** - [cwalker012](https://github.com/cwalker012)
 * **Lucas Pham** - [luangia](https://github.com/luangia)
 * **Sarah Lester** - [selester12](https://github.com/selester12)
