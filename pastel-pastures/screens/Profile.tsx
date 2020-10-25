@@ -105,6 +105,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: "600",
         textAlign: "center",
+        fontFamily: "serif",
     },
     header: {
         backgroundColor: "#033500",
@@ -130,6 +131,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         paddingBottom: 8,
         textAlign: "center",
+        fontFamily: "serif",
     },
     separator: {
         marginVertical: 30,

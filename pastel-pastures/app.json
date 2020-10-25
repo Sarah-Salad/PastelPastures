@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ReactNativeTest",
-    "slug": "ReactNativeTest",
+    "name": "Bloom",
+    "slug": "Bloom",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",

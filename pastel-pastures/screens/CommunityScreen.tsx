@@ -2,9 +2,6 @@ import * as React from "react";
 import { StyleSheet, ScrollView } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 
-import EditScreenInfo from "../components/EditScreenInfo";
-import { Text, View } from "../components/Themed";
-
 export default function CommunityScreen() {
     const list = [
         {
