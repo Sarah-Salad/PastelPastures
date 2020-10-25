@@ -1,12 +1,13 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import * as React from "react";
+import { StyleSheet } from "react-native";
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import { Header } from 'react-native-elements';
-import { ListItem, Avatar} from 'react-native-elements';
-import { AsyncStorage } from 'react-native';
-import Storage from '../storage/Storage';
+import EditScreenInfo from "../components/EditScreenInfo";
+import { Text, View } from "../components/Themed";
+import { Header } from "react-native-elements";
+import { ListItem, Avatar } from "react-native-elements";
+import { AsyncStorage } from "react-native";
+import Storage from "../storage/Storage";
+import { Alert } from "react-native";
 
 var goalsArray: Array<any>;
 AsyncStorage.clear();
@@ -83,36 +84,36 @@ export default function ManageGoalsScreen({ navigation }: any) {
   );
 }
 
-
 const styles = StyleSheet.create({
-  container: {
-    //alignItems: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-  list:{
-    backgroundColor: "black",
-  },
-  rightIcon:{
-    alignSelf: "flex-end",
-  },
-  header:{
-    color:"black",
-    backgroundColor:"#033500"
-  },
-  listTitle1:{
-    padding: 13,
-    fontSize: 12,
-    alignSelf: "center"
-  },
-  listItem:{
-    backgroundColor:"#3d3d3d",
-  }
+    container: {
+        //alignItems: 'center',
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: "bold",
+        fontFamily: 'serif'
+    },
+    separator: {
+        marginVertical: 30,
+        height: 1,
+        width: "80%",
+    },
+    list: {
+        backgroundColor: "black",
+    },
+    rightIcon: {
+        alignSelf: "flex-end",
+    },
+    header: {
+        color: "black",
+        backgroundColor: "#609433",
+    },
+    listTitle1: {
+        padding: 13,
+        fontSize: 12,
+        alignSelf: "center",
+    },
+    listItem: {
+        backgroundColor: "#000",
+    },
 });
