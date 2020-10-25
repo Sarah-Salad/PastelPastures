@@ -47,7 +47,8 @@ export default function HomeScreen({navigation}: any) {
       <Header containerStyle={styles.header}
         centerComponent={{text:"Time to Bloom", style: { color: '#fff', fontSize: 25, fontFamily: "serif"}}}
         ></Header>
-  
+  <Text style={styles.title}>20 BP</Text>
+  <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
     <ScrollView style = {styles.list}>{
       goalList.map((l,i) => (
         <ListItem key={i} bottomDivider containerStyle = {l.completed ? {backgroundColor: "#033500"} : {backgroundColor:"#3d3d3d"}} onPress = {() => {
@@ -95,16 +96,18 @@ export default function HomeScreen({navigation}: any) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#8e80ff"
+    backgroundColor: "#3d3d3d"
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    textAlign: 'center',
+    fontFamily: 'serif',
+    padding: 15
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 0,
     height: 1,
-    width: '80%',
+    width: '100%',
   },
   centerComponent:{
     fontSize: 20,
