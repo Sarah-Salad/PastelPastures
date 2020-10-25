@@ -39,7 +39,7 @@ export default function BottomTabNavigator() {
                     ),
                 }}
             />
-            <BottomTab.Screen
+            {/* <BottomTab.Screen
                 name="AddGoals"
                 component={ManageGoalsNavigator}
                 options={{
@@ -47,7 +47,7 @@ export default function BottomTabNavigator() {
                         <TabBarIcon name="ios-add" color={color} />
                     ),
                 }}
-            ></BottomTab.Screen>
+            ></BottomTab.Screen> */}
 
             <BottomTab.Screen
                 name="Profile"
@@ -121,6 +121,11 @@ function HomeScreenNavigator() {
                 name="HomeScreen"
                 component={HomeScreen}
                 options={{ headerTitle: "Dashboard" }}
+            />
+            <HomeScreenStack.Screen 
+                name="ManageGoalsScreen"
+                component={ManageGoalsScreen}
+                options={{ headerTitle: "Add Goals" }}
             />
         </HomeScreenStack.Navigator>
     );

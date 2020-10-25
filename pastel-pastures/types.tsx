@@ -17,6 +17,7 @@ export type ManageGoalsParamList = {
 };
 export type HomeScreenParamList = {
     HomeScreen: undefined;
+    ManageGoalsScreen: undefined;
 };
 
 export type HistoryTabParamList = {
