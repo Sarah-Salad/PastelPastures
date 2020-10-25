@@ -8,19 +8,27 @@ import { ListItem, Avatar} from 'react-native-elements';
 import { AsyncStorage } from 'react-native';
 import Storage from '../storage/Storage';
 
-<Storage />
+var goalsArray;
+AsyncStorage.clear();
 console.log("pre async");
 (async() =>{
   console.log("started async");
   try{
-    const goalArray = await AsyncStorage.getItem('Goals');
-    if (goalArray !== null){
-      console.log(goalArray);
+    await AsyncStorage.setItem('Goals', JSON.stringify([
+      {name: 'Take a walk', BP: 10, completed: false},
+      {name: 'Take a shower', BP: 5, completed: false},
+      {name: 'Do an exercise routine', BP: 15, completed: false}
+    ]))
+    var goalsArrayString = await AsyncStorage.getItem('Goals');
+    if (goalsArrayString !== null){
+      console.log(goalsArrayString);
+      goalsArray = JSON.parse(goalsArrayString);
     }
   } catch(error){
-    console.log("oops")
+    console.log()
   }
 })();
+
 const list = [
   {
     name:'Take a walk',
