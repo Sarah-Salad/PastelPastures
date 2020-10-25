@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { Alert, StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -48,13 +48,13 @@ export default function ManageGoalsScreen({ navigation }: any) {
         ></Header>
         <View style = {styles.list}>{
         list.map((l, i) => (
-          <ListItem key={i} bottomDivider containerStyle = {styles.listItem}>
+          <ListItem key={i} bottomDivider containerStyle = {styles.listItem} onPress = {() => {
+              Alert.alert("Goal Added", "Okay! We just added '" + l.name + "' to your goals. Taking care of yourself is the first step to improving your mindspace.");
+          }}>
           <ListItem.Content >
             <ListItem.Title style={{color: "white"}}>{l.name}</ListItem.Title>
           </ListItem.Content>
-          <ListItem.Chevron onPress = {() => {
-          
-          }} style = {styles.rightIcon} iconProps = {{name:"add", size:21}}/>
+          <ListItem.Chevron style = {styles.rightIcon} iconProps = {{name:"add", size:21}}/>
           </ListItem>
         ))
       }

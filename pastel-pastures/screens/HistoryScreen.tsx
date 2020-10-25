@@ -80,16 +80,16 @@ export default function HistoryScreen() {
             </ListItem>
         <View style={ {backgroundColor: '#3d3d3d'} }> 
           <View style={styles.correct}>
-            <Text style={styles.goaltext}> <Icon name='check-circle-o' type='font-awesome'/>    {l.goal1} </Text> 
+            <Text style={styles.goaltext}> <Icon name='check-circle-o' type='font-awesome' color = '#fff'/>    {l.goal1} </Text> 
           </View>
           <View style={styles.incorrect}>
-            <Text style={styles.goaltext}> <Icon name='times-circle-o' type='font-awesome'/>    {l.goal2} </Text> 
+            <Text style={styles.goaltext}> <Icon name='times-circle-o' type='font-awesome' color = '#fff'/>    {l.goal2} </Text> 
           </View>
           <View style={styles.correct}>
-            <Text style={styles.goaltext}> <Icon name='check-circle-o' type='font-awesome'/>    {l.goal3} </Text> 
+            <Text style={styles.goaltext}> <Icon name='check-circle-o' type='font-awesome' color = '#fff'/>    {l.goal3} </Text> 
           </View>
           <View style={styles.incorrect}>
-            <Text style={styles.goaltext}> <Icon name='times-circle-o' type='font-awesome'/>    {l.goal4} </Text> 
+            <Text style={styles.goaltext}> <Icon name='times-circle-o' type='font-awesome' color = '#fff'/>    {l.goal4} </Text> 
           </View>
         </View>
         </>
