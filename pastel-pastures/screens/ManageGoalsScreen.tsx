@@ -5,24 +5,21 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { Header } from 'react-native-elements';
 import { ListItem, Avatar} from 'react-native-elements';
+import { AsyncStorage } from 'react-native';
 
 
 const list = [
   {
     name:'Take a walk',
-    subtitle:"15XP"
   },
   {
     name:"Take a Shower",
-    subtitle:"5XP"
   },
   {
     name:"Do an Exercise routine",
-    subtitle:"10XP"
   },
   {
     name:"Read for an hour",
-    subtitle: "10XP"
   }
 
 ]
@@ -34,14 +31,13 @@ export default function ManageGoalsScreen({ navigation }: any) {
         leftComponent={{ icon: 'arrow-back', color: '#fff', onPress: (() => {
           navigation.navigate('HomeScreen')
         })}}
-        centerComponent={{ text: 'Manage Goals', style: { color: '#fff' } }}
+        centerComponent={{ text: 'Add Goals', style: { color: '#fff' } }}
         ></Header>
         <View style = {styles.list}>{
         list.map((l, i) => (
           <ListItem key={i} bottomDivider containerStyle = {styles.listItem}>
           <ListItem.Content >
             <ListItem.Title style={{color: "white"}}>{l.name}</ListItem.Title>
-          <ListItem.Subtitle style={{color: "#c4c4c4"}}>{l.subtitle}</ListItem.Subtitle>
           </ListItem.Content>
           <ListItem.Chevron onPress = {() => {
           
@@ -57,6 +53,17 @@ export default function ManageGoalsScreen({ navigation }: any) {
     </View>
   );
 }
+
+const StoreData = async () => {
+  try {
+    await AsyncStorage.setItem(
+      '@Name:key',
+      'Save it.'
+    );
+  } catch (error) {
+    // Error saving data
+  }
+};
 
 const styles = StyleSheet.create({
   container: {
