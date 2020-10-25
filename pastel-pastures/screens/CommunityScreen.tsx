@@ -57,7 +57,7 @@ export default function CommunityScreen() {
                         </ListItem.Title>
                     </ListItem.Content>
                     <ListItem.Subtitle style={styles.scoretext}>
-                        {l.score + " MP"}
+                        {l.score + " BP"}
                     </ListItem.Subtitle>
                 </ListItem>
             ))}
@@ -68,6 +68,7 @@ export default function CommunityScreen() {
 const styles = StyleSheet.create({
     listTitle: {
         color: "#fff",
+        fontFamily: "serif"
     },
     listContainer: {
         color: "white",
@@ -81,10 +82,12 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: "bold",
+        fontFamily: "serif"
     },
     scoretext: {
         alignContent: "flex-end",
         color: "white",
+        fontFamily: "serif"
     },
     separator: {
         marginVertical: 30,

@@ -124,16 +124,19 @@ export default function HomeScreen({ navigation }: any) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#8e80ff",
+        backgroundColor: "#000",
+
     },
     title: {
         fontSize: 20,
-        fontWeight: "bold",
+        textAlign: "center",
+        fontFamily: "serif",
+        padding: 15
     },
     separator: {
-        marginVertical: 30,
-        height: 1,
-        width: "80%",
+        marginVertical: 0,
+        height: 2,
+        width: "100%",
     },
     centerComponent: {
         fontSize: 20,

@@ -146,15 +146,18 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         color: "white",
+        fontFamily: "serif"
     },
     goaltext: {
         fontSize: 16,
         color: "white",
+        fontFamily: "serif"
     },
     subtext: {
         alignItems: "flex-end",
         fontSize: 16,
         color: "#c4c4c4",
+        fontFamily: "serif"
     },
     listItem: {
         backgroundColor: "#000",

@@ -66,7 +66,7 @@ export default function Profile() {
                 <Text style={styles.title}>Level:</Text>
                 <View style={styles.progressContainer}>
                     <ProgressBar progress={0.7} color={"#33AA33"} />
-                    <Text style={{ alignSelf: "flex-end" }}>70/100 MP</Text>
+                    <Text style={{ alignSelf: "flex-end", fontFamily: "serif"}}>70/100 BP</Text>
                 </View>
             </View>
         </View>
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         paddingLeft: 10,
+        fontFamily: "serif"
     },
     badgesContainer: {
         margin: 16,
