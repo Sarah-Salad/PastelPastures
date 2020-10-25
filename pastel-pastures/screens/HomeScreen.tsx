@@ -1,139 +1,144 @@
-import * as React from 'react';
-import {useState} from 'react';
-import { StyleSheet, FlatList, Button, SafeAreaView, Alert } from 'react-native';
-import {Overlay, ListItem, Icon, CheckBox} from 'react-native-elements';
+import * as React from "react";
+import { useState } from "react";
+import {
+    StyleSheet,
+    FlatList,
+    Button,
+    SafeAreaView,
+    Alert,
+} from "react-native";
+import { Overlay, ListItem, Icon, Header } from "react-native-elements";
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import  {GoalItem} from '../GoalItem'
-import { Goal, ToggleGoal } from '../types';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
-const initialGoals: Array<Goal> = [{text: "Exercise", completed: true},{text: "Take a shower", completed: false}]
+import EditScreenInfo from "../components/EditScreenInfo";
+import { Text, View } from "../components/Themed";
+import { GoalItem } from "../GoalItem";
+import { Goal, ToggleGoal } from "../types";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
+import { coolDownAsync } from "expo-web-browser";
+
 const goalList = [
-  {
-    title: 'Appointments',
-    icon: 'av-timer'
-  },
-  {
-    title: 'Trips',
-    icon: 'flight-takeoff'
-  },
-  
-]
+    {
+        title: "Do an Exercise Routine",
+        completed: false,
+        bp: 15,
+        icon: <Icon name="heartbeat" type="font-awesome" color="#f60" />,
+    },
+    {
+        title: "Meditate for 10 minutes",
+        completed: true,
+        bp: 10,
+        icon: <Icon name="odnoklassniki" type="font-awesome" color="#aad9fa" />,
+    },
+    {
+        title: "Get enough sleep",
+        completed: false,
+        bp: 10,
+        icon: <Icon name="moon-o" type="font-awesome" color="#8e80ff" />,
+    },
+];
 
-export default function HomeScreen() {
-  const [goals, setGoals] = useState(initialGoals)
+export default function HomeScreen({ navigation }: any) {
+    return (
+        <View style={styles.container}>
+            <Header
+                containerStyle={styles.header}
+                centerComponent={{
+                    text: "Time to Bloom",
+                    style: { color: "#fff", fontSize: 25 },
+                }}
+            ></Header>
 
-  const toggleGoal: ToggleGoal = selectedGoal  => {
-    const newGoals = goals.map(goal =>{
-      if(goal == selectedGoal) {
-        return {
-          ...goal,
-          completed: !goal.completed
-        }
-      }
-      return goal;
-    });
-    setGoals(newGoals);
-  }
-
-  const [toggleCheckBox, setToggleCheckBox]= useState(false);
-
-  const Separator = () => (
-    <View style = {styles.separator}/>
-  );
-
-
-  const [visible, setVisible] = useState(false);
-
-  const toggleOverlay = () => {
-    setVisible(!visible);
-  };
-
-
-  const percentage = 66;
-  return (
-    
-    <SafeAreaView style={styles.container}>
- 
-      <View>
-        <Text style={styles.title}>Take a moment for yourself...</Text>
-
-                </View>
-
-<View>
-  {
-    goalList.map((item, i) => (
-      <ListItem key={i} bottomDivider>
-        <Icon name={item.icon} />
-        <ListItem.Content>
-          <ListItem.Title>{item.title}</ListItem.Title>
-        </ListItem.Content>
-        <ListItem.Chevron />
-      </ListItem>
-    ))
-  }
-</View>
-<View>
-      <Button title="Open Overlay" onPress={toggleOverlay} />
-
-      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
-        <Text>Hello from Overlay!</Text>
-      </Overlay>
-    </View>
-        {/* <Button
-          title = "Exercise"
-          onPress = {() => Alert.alert("Great job! Taking care of yourself is the first step to success.")}
-        /> */}
-        {/* <FlatList
-        data={[
-          {key: <GoalItem goal = {goals[0]}/>},
-          {key: <GoalItem goal = {goals[1]}/>},
-        ]}
-        renderItem={({item}) => 
-          <View style = {styles.container}>
-          <CheckBox 
-            value={toggleCheckBox}
-            onValueChange={(newValue) => setToggleCheckBox(newValue)}
-          />
-          <Text>{item.key}</Text>
-          </View>
-
-        }
-      />     */}
-{/* 
-        <View>
-        <Icon
-          raised
-          name='heartbeat'
-          type='font-awesome'
-          color='#f50'
-          onPress={() => console.log('hello')} />
-        </View> */}
-
-        <View style={styles.separator} lightColor="#eee" darkColor="#252625" />
-        <EditScreenInfo path="/screens/HomeScreen.js" />
-    </SafeAreaView>
-  );
+            <View style={styles.list}>
+                {goalList.map((l, i) => (
+                    <ListItem
+                        key={i}
+                        bottomDivider
+                        containerStyle={
+                            l.completed
+                                ? { backgroundColor: "#609433" }
+                                : { backgroundColor: "#000" }
+                        }
+                        onPress={() => {
+                            Alert.alert(
+                                "I'm proud of you",
+                                !l.completed
+                                    ? "Great job! You just earned " +
+                                          l.bp +
+                                          " Bloom Points"
+                                    : "You're doing a great job"
+                            );
+                            l.completed = !l.completed;
+                        }}
+                    >
+                        {l.icon}
+                        <ListItem.Content>
+                            <ListItem.Title style={{ color: "white" }}>
+                                {l.title}
+                            </ListItem.Title>
+                        </ListItem.Content>
+                        <ListItem.Chevron
+                            style={styles.rightIcon}
+                            iconProps={
+                                l.completed
+                                    ? { name: "md-checkmark", size: 21 }
+                                    : { name: "md-trash", size: 21 }
+                            }
+                        />
+                    </ListItem>
+                ))}
+            </View>
+            <View style={styles.list}>
+                <ListItem
+                    containerStyle={styles.listItem}
+                    onPress={() => {
+                        navigation.navigate("ManageGoalsScreen");
+                    }}
+                >
+                    {<Icon name="plus" type="font-awesome" color="#3b7a31" />}
+                    <ListItem.Content>
+                        <ListItem.Title style={{ color: "#fff" }}>
+                            {"Add a New Goal"}
+                        </ListItem.Title>
+                    </ListItem.Content>
+                </ListItem>
+            </View>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-  
+    container: {
+        backgroundColor: "#8e80ff",
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: "bold",
+    },
+    separator: {
+        marginVertical: 30,
+        height: 1,
+        width: "80%",
+    },
+    centerComponent: {
+        fontSize: 20,
+    },
+    list: {
+        backgroundColor: "#609433",
+    },
+    rightIcon: {
+        alignSelf: "flex-end",
+    },
+    header: {
+        color: "#033500",
+        backgroundColor: "#609433",
+        fontSize: 20,
+    },
+    listTitle1: {
+        padding: 13,
+        fontSize: 12,
+        alignSelf: "center",
+    },
+    listItem: {
+        backgroundColor: "#000",
+    },
 });
-
-
-  

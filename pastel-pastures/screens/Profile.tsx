@@ -1,75 +1,99 @@
-import * as React from "react";
+import React from "react";
 import { StyleSheet, Image, ImageBackground } from "react-native";
-import { Card, Icon } from "react-native-elements";
+import { Icon } from "react-native-elements";
+import { ProgressBar } from "react-native-paper";
 import { Text, View } from "../components/Themed";
 
+const background = require("../assets/images/background.jpg");
+
 const badges = [
-    { name: "place", color: "#00aced" },
-    { name: "star", color: "#517fa4" },
-    { name: "album", color: "#f50" },
-    { name: "games" },
+    { name: "beach-access", color: "#00aced" },
+    { name: "star", color: "#f3a613" },
+    { name: "healing", color: "#ba53d1" },
+    { name: "games", color: "#d00" },
 ];
 
 export default function Profile() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Image
-                    style={styles.avatar}
-                    source={require("../assets/images/profile.png")}
-                />
-                <Text style={styles.name}>Thomas Felton</Text>
-                <View style={styles.locationContainer}>
-                    <Icon
-                        name="place"
-                        underlayColor="transparent"
-                        iconStyle={styles.placeIcon}
+                <ImageBackground
+                    source={background}
+                    blurRadius={10}
+                    style={{ width: "100%", height: "100%" }}
+                >
+                    <Image
+                        style={styles.avatar}
+                        source={require("../assets/images/profile.png")}
                     />
+                    <Text style={styles.name}>Thomas Felton</Text>
+                    <View style={styles.locationContainer}>
+                        <Icon
+                            name="place"
+                            underlayColor="transparent"
+                            iconStyle={styles.placeIcon}
+                        />
 
-                    <View style={styles.locationRow}>
-                        <Text style={styles.location}>Springfield, MO</Text>
+                        <View style={styles.locationRow}>
+                            <Text style={styles.location}>Springfield, MO</Text>
+                        </View>
                     </View>
+                </ImageBackground>
+            </View>
+
+            <View style={styles.badgesContainer}>
+                <Text style={styles.title}>Badges</Text>
+                <View style={styles.badges}>
+                    {badges.map((b, i) => {
+                        return (
+                            <View
+                                key={i}
+                                style={{ backgroundColor: "transparent" }}
+                            >
+                                <Icon
+                                    name={b.name}
+                                    color={b.color}
+                                    reverse
+                                    underlayColor="transparent"
+                                />
+                            </View>
+                        );
+                    })}
                 </View>
             </View>
 
-            <View>
-                <Card>
-                    <Card.Title>Badges</Card.Title>
-                    <Card.Divider />
-                    <View style={styles.badges}>
-                        {badges.map((b, i) => {
-                            return (
-                                <View
-                                    key={i}
-                                    style={{ backgroundColor: "transparent" }}
-                                >
-                                    <Icon
-                                        name={b.name}
-                                        color={b.color}
-                                        reverse
-                                        underlayColor="transparent"
-                                    />
-                                </View>
-                            );
-                        })}
-                    </View>
-                </Card>
+            <View style={styles.badgesContainer}>
+                <Text style={styles.title}>Level:</Text>
+                <View style={styles.progressContainer}>
+                    <ProgressBar progress={0.7} color={"#33AA33"} />
+                    <Text style={{ alignSelf: "flex-end" }}>70/100 MP</Text>
+                </View>
             </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    progressContainer: {
+        padding: 10,
+    },
+    title: {
+        fontSize: 20,
+        paddingLeft: 10,
+    },
+    badgesContainer: {
+        margin: 16,
+    },
     badges: {
         flexDirection: "row",
-        backgroundColor: "white",
+        backgroundColor: "transparent",
     },
     placeIcon: {
         color: "white",
         fontSize: 26,
     },
     locationContainer: {
-        alignItems: "center",
+        alignSelf: "center",
         flexDirection: "row",
         backgroundColor: "transparent",
     },

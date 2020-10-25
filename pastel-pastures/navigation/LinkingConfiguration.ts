@@ -9,31 +9,30 @@ export default {
           Home: {
             screens: {
               HomeScreen: 'home',
-            }
+            },
           },
           Profile: {
             screens: {
               Profile: 'profile',
             },
           },
-          TabOne: {
+          HistoryTab: {
             screens: {
-              TabOneScreen: 'one',
+              HistoryScreen: 'history',
             },
           },
-
-          TabTwo: {
+          CommunityTab: {
             screens: {
-              TabTwoScreen: 'two',
-            },
+              CommunityScreen: 'community',
           },
+        },
           ManageGoals:{
             screens:{
               ManageGoalsScreen: 'manage',
-            },
           },
         },
       },
+    },
       NotFound: '*',
     },
   },

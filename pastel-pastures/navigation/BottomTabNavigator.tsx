@@ -5,19 +5,18 @@ import * as React from "react";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import CommunityScreen from "../screens/CommunityScreen";
+import HistoryScreen from "../screens/HistoryScreen";
 import Profile from "../screens/Profile";
-
 import ManageGoalsScreen from "../screens/ManageGoalsScreen";
 import HomeScreen from "../screens/HomeScreen";
 import {
     BottomTabParamList,
     HomeScreenParamList,
-    TabOneParamList,
-    TabTwoParamList,
     ManageGoalsParamList,
     ProfileParamList,
+    HistoryTabParamList,
+    CommunityTabParamList,
 } from "../types";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
@@ -35,32 +34,18 @@ export default function BottomTabNavigator() {
                 component={HomeScreenNavigator}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="ios-code" color={color} />
+                        <TabBarIcon name="ios-home" color={color} />
                     ),
                 }}
             />
-            <BottomTab.Screen
-                name="TabOne"
-                component={TabOneNavigator}
-                options={{
-                    tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="ios-code" color={color} />
-                    ),
-                }}
-            />
-            <BottomTab.Screen
-                name="TabTwo"
-                component={TabTwoNavigator}
-                options={{
-                    tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="ios-code" color={color} />
-                    ),
-                }}
-            />
-
             <BottomTab.Screen
                 name="ManageGoals"
                 component={ManageGoalsNavigator}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="ios-create" color={color} />
+                    ),
+                }}
             ></BottomTab.Screen>
 
             <BottomTab.Screen
@@ -69,6 +54,24 @@ export default function BottomTabNavigator() {
                 options={{
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="ios-contact" color={color} />
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="History"
+                component={HistoryTabNavigator}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="ios-list" color={color} />
+                    ),
+                }}
+            />
+            <BottomTab.Screen
+                name="Community"
+                component={CommunityTabNavigator}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="ios-people" color={color} />
                     ),
                 }}
             />
@@ -98,34 +101,6 @@ function ProfileNavigator() {
     );
 }
 
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
-
-function TabTwoNavigator() {
-    return (
-        <TabTwoStack.Navigator>
-            <TabTwoStack.Screen
-                name="TabTwoScreen"
-                component={TabTwoScreen}
-                options={{ headerTitle: "Tab Two Title" }}
-            />
-        </TabTwoStack.Navigator>
-    );
-}
-
-const TabOneStack = createStackNavigator<TabOneParamList>();
-
-function TabOneNavigator() {
-    return (
-        <TabOneStack.Navigator>
-            <TabOneStack.Screen
-                name="TabOneScreen"
-                component={TabOneScreen}
-                options={{ headerTitle: "Tab One Title" }}
-            />
-        </TabOneStack.Navigator>
-    );
-}
-
 const ManageGoalsStack = createStackNavigator<ManageGoalsParamList>();
 
 function ManageGoalsNavigator() {
@@ -134,7 +109,7 @@ function ManageGoalsNavigator() {
             <ManageGoalsStack.Screen
                 name="ManageGoalsScreen"
                 component={ManageGoalsScreen}
-                options={{ headerTitle: "Manage Goals Title" }}
+                options={{ headerTitle: "Manage Goals" }}
             />
         </ManageGoalsStack.Navigator>
     );
@@ -151,5 +126,33 @@ function HomeScreenNavigator() {
                 options={{ headerTitle: "Dashboard" }}
             />
         </HomeScreenStack.Navigator>
+    );
+}
+
+const HistoryTabStack = createStackNavigator<HistoryTabParamList>();
+
+function HistoryTabNavigator() {
+    return (
+        <HistoryTabStack.Navigator>
+            <HistoryTabStack.Screen
+                name="HistoryScreen"
+                component={HistoryScreen}
+                options={{ headerTitle: "History" }}
+            />
+        </HistoryTabStack.Navigator>
+    );
+}
+
+const CommunityTabStack = createStackNavigator<CommunityTabParamList>();
+
+function CommunityTabNavigator() {
+    return (
+        <CommunityTabStack.Navigator>
+            <CommunityTabStack.Screen
+                name="CommunityScreen"
+                component={CommunityScreen}
+                options={{ headerTitle: "Community" }}
+            />
+        </CommunityTabStack.Navigator>
     );
 }
