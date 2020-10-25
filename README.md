@@ -3,8 +3,8 @@ The Bloom app allows you to set daily goals for yourself in order to maintain a 
 
 <p align="center">
 <img src="https://github.com/selester12/PastelPastures/blob/main/pastel-pastures/assets/images/splash.png" width="500" height="500">
- [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 </p>
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## :wrench: Installations
 
