@@ -37,6 +37,20 @@ const goalList = [
     },
 ];
 
+
+
+function getTotalBP(){
+
+  let totalBP = 0;
+  for(let i = 0; i < goalList.length; i++){
+    if(goalList[i].completed){
+      totalBP += goalList[i].bp;
+    }
+  }
+
+  return totalBP;
+}
+  
 export default function HomeScreen({ navigation }: any) {
     return (
         <View style={styles.container}>
@@ -44,9 +58,11 @@ export default function HomeScreen({ navigation }: any) {
                 containerStyle={styles.header}
                 centerComponent={{
                     text: "Time to Bloom",
-                    style: { color: "#fff", fontSize: 25 },
+                    style: { color: "#fff", fontSize: 25, fontFamily: "serif"},
                 }}
             ></Header>
+            <Text style={styles.title}>{getTotalBP()} BP</Text>
+            <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
 
             <View style={styles.list}>
                 {goalList.map((l, i) => (
@@ -72,7 +88,7 @@ export default function HomeScreen({ navigation }: any) {
                     >
                         {l.icon}
                         <ListItem.Content>
-                            <ListItem.Title style={{ color: "white" }}>
+                            <ListItem.Title style={{ color: "white", fontFamily: "serif" }}>
                                 {l.title}
                             </ListItem.Title>
                         </ListItem.Content>
@@ -96,7 +112,7 @@ export default function HomeScreen({ navigation }: any) {
                 >
                     {<Icon name="plus" type="font-awesome" color="#3b7a31" />}
                     <ListItem.Content>
-                        <ListItem.Title style={{ color: "#fff" }}>
+                        <ListItem.Title style={{ color: "#fff", fontFamily: "serif" }}>
                             {"Add a New Goal"}
                         </ListItem.Title>
                     </ListItem.Content>
