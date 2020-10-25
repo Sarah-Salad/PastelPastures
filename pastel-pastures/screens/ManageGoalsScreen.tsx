@@ -6,8 +6,21 @@ import { Text, View } from '../components/Themed';
 import { Header } from 'react-native-elements';
 import { ListItem, Avatar} from 'react-native-elements';
 import { AsyncStorage } from 'react-native';
+import Storage from '../storage/Storage';
 
-
+<Storage />
+console.log("pre async");
+(async() =>{
+  console.log("started async");
+  try{
+    const goalArray = await AsyncStorage.getItem('Goals');
+    if (goalArray !== null){
+      console.log(goalArray);
+    }
+  } catch(error){
+    console.log("oops")
+  }
+})();
 const list = [
   {
     name:'Take a walk',
@@ -54,16 +67,6 @@ export default function ManageGoalsScreen({ navigation }: any) {
   );
 }
 
-const StoreData = async () => {
-  try {
-    await AsyncStorage.setItem(
-      '@Name:key',
-      'Save it.'
-    );
-  } catch (error) {
-    // Error saving data
-  }
-};
 
 const styles = StyleSheet.create({
   container: {
