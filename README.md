@@ -1,6 +1,5 @@
-# PastelPastures
-Federal Reserve Code-A-Thon 2020 
-((description))
+# Bloom App - PastelPastures
+This app allows you to set daily goals for yourself in order to maintain a good mental health throughout the day, whether it be doing your chores or giving yourself a healthy break from work. Using the Community tab, you can see what you and your friends have completed. Along with a leaderboard, you can gain badges to motivate you to achieve your goals. Social distancing is hard and we hope with the support of Bloom you can keep you mind uncluttered and healthy throughout the week :)
 
 ## For developers
 
@@ -11,7 +10,7 @@ $ git clone https://github.com/selester12/PastelPastures.git
 $ cd PastelPastures/pastel-pastures
 ```
 
-Install project dependencies: (Grab a drink and make yourself comfortable because this might take a couple of minutes)
+Install project dependencies (Grab a drink and make yourself comfortable because this might take a couple of minutes):
 
 ```sh
 $ npm install
@@ -32,6 +31,11 @@ To run the app with live reloading, choose one of:
 ## Built With
 
 * [React Native](https://reactnative.dev/) - The app framework used
+
+## Screens
+Home
+Profile
+Community
 
 
 ## Authors
