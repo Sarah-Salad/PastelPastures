@@ -71,18 +71,18 @@ export default function HistoryScreen() {
     <ScrollView>{
       list.map((l, i) => (
         <>
-            <ListItem key={i} bottomDivider>
+            <ListItem key={i} containerStyle = {styles.listItem} bottomDivider>
               <ListItem.Content>
                 <ListItem.Title style={styles.title}>{l.timeframe}</ListItem.Title>
               </ListItem.Content>
               <ListItem.Subtitle style={styles.subtext}>{l.completion}</ListItem.Subtitle>
             </ListItem>
-        <ListItem key={i + list.length} bottomDivider>
-          <ListItem.Content>
-            <ListItem.Title key = {l.goal1} style={styles.goaltext}><Icon name='check-circle-o' type='font-awesome'/>{l.goal1}</ListItem.Title>
-            <ListItem.Title key = {l.goal2} style={styles.goaltext}><Icon name='times-circle-o' type='font-awesome'/>{l.goal2}</ListItem.Title>
-            <ListItem.Title key = {l.goal3} style={styles.goaltext}><Icon name='check-circle-o' type='font-awesome'/>{l.goal3}</ListItem.Title>
-            <ListItem.Title key = {l.goal4} style={styles.goaltext}><Icon name='times-circle-o' type='font-awesome'/>{l.goal4}</ListItem.Title>
+        <ListItem key={i + list.length} containerStyle = {styles.listItem} bottomDivider>
+          <ListItem.Content> 
+            <ListItem.Title key = {l.goal1} style={styles.goaltext}><Icon name='check-circle-o' type='font-awesome'/> {l.goal1}</ListItem.Title>
+            <ListItem.Title key = {l.goal2} style={styles.goaltext}><Icon name='times-circle-o' type='font-awesome'/> {l.goal2}</ListItem.Title>
+            <ListItem.Title key = {l.goal3} style={styles.goaltext}><Icon name='check-circle-o' type='font-awesome'/> {l.goal3}</ListItem.Title>
+            <ListItem.Title key = {l.goal4} style={styles.goaltext}><Icon name='times-circle-o' type='font-awesome'/> {l.goal4}</ListItem.Title>
           </ListItem.Content>
         </ListItem>
         </>
@@ -98,20 +98,23 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    color: 'white'
   },
   goaltext: {
-    alignItems: "flex-start",
     fontSize: 16,
-    color: '#3d3d3d'
+    color: 'white',
   },
   subtext: {
     alignItems: "flex-end",
     fontSize: 16,
-    color: '#3d3d3d'
+    color: '#c4c4c4'
+  },
+  listItem:{
+    color: '#3d3d3d',
+    backgroundColor:"#3d3d3d"
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 3,
     height: 1,
     width: '80%',
   },
