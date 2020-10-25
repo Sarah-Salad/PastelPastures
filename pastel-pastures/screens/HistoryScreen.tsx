@@ -3,63 +3,64 @@ import * as React from 'react';
 import { StyleSheet , ScrollView } from 'react-native';
 import { ListItem, Avatar, colors } from 'react-native-elements';
 import {Icon} from 'react-native-elements';
+import { Text, View } from '../components/Themed';
 
 const list = [
   {
     timeframe: 'Monday',
     completion: '75%',
-    goal1: 'walk your dog',
-    goal2: 'eat a cracker',
-    goal3: 'sleep',
-    goal4: 'shower'
+    goal1: 'Walk your dog',
+    goal2: 'Eat a cracker',
+    goal3: 'Sleep',
+    goal4: 'Shower'
   },
   {
     timeframe: 'Tuesday',
     completion: '75%',
-    goal1: 'walk your dog',
-    goal2: 'eat a cracker',
-    goal3: 'sleep',
-    goal4: 'shower'
+    goal1: 'Walk your dog',
+    goal2: 'Eat a cracker',
+    goal3: 'Sleep',
+    goal4: 'Shower'
   },
   {
     timeframe: 'Wednesday',
     completion: '50%',
-    goal1: 'walk your dog',
-    goal2: 'eat a cracker',
-    goal3: 'sleep',
-    goal4: 'shower',
+    goal1: 'Walk your dog',
+    goal2: 'Eat a cracker',
+    goal3: 'Sleep',
+    goal4: 'Shower',
   },
   {
     timeframe: 'Thursday',
     completion: '50%',
-    goal1: 'walk your dog',
-    goal2: 'eat a cracker',
-    goal3: 'sleep',
-    goal4: 'shower',
+    goal1: 'Walk your dog',
+    goal2: 'Eat a cracker',
+    goal3: 'Sleep',
+    goal4: 'Shower',
   },
   {
     timeframe: 'Friday',
     completion: '75%',
-    goal1: 'walk your dog',
-    goal2: 'eat a cracker',
-    goal3: 'sleep',
-    goal4: 'shower',
+    goal1: 'Walk your dog',
+    goal2: 'Eat a cracker',
+    goal3: 'Sleep',
+    goal4: 'Shower',
   },
   {
     timeframe: 'Saturday',
     completion: '100%',
-    goal1: 'walk your dog',
-    goal2: 'eat a cracker',
-    goal3: 'sleep',
-    goal4: 'shower',
+    goal1: 'Walk your dog',
+    goal2: 'Eat a cracker',
+    goal3: 'Sleep',
+    goal4: 'Shower',
   },
   {
     timeframe: 'Sunday',
     completion: '50%',
-    goal1: 'walk your dog',
-    goal2: 'eat a cracker',
-    goal3: 'sleep',
-    goal4: 'shower',
+    goal1: 'Walk your dog',
+    goal2: 'Eat a cracker',
+    goal3: 'Sleep',
+    goal4: 'Shower',
   }
 ]
 
@@ -71,20 +72,26 @@ export default function HistoryScreen() {
     <ScrollView>{
       list.map((l, i) => (
         <>
-            <ListItem key={i} containerStyle = {styles.listItem} bottomDivider>
+            <ListItem key={i} containerStyle = {styles.listItem} topDivider bottomDivider>
               <ListItem.Content>
                 <ListItem.Title style={styles.title}>{l.timeframe}</ListItem.Title>
               </ListItem.Content>
               <ListItem.Subtitle style={styles.subtext}>{l.completion}</ListItem.Subtitle>
             </ListItem>
-        <ListItem key={i + list.length} containerStyle = {styles.listItem} bottomDivider>
-          <ListItem.Content> 
-            <ListItem.Title key = {l.goal1} style={styles.goaltext}><Icon name='check-circle-o' type='font-awesome'/> {l.goal1}</ListItem.Title>
-            <ListItem.Title key = {l.goal2} style={styles.goaltext}><Icon name='times-circle-o' type='font-awesome'/> {l.goal2}</ListItem.Title>
-            <ListItem.Title key = {l.goal3} style={styles.goaltext}><Icon name='check-circle-o' type='font-awesome'/> {l.goal3}</ListItem.Title>
-            <ListItem.Title key = {l.goal4} style={styles.goaltext}><Icon name='times-circle-o' type='font-awesome'/> {l.goal4}</ListItem.Title>
-          </ListItem.Content>
-        </ListItem>
+        <View style={ {backgroundColor: '#3d3d3d'} }> 
+          <View style={styles.correct}>
+            <Text style={styles.goaltext}> <Icon name='check-circle-o' type='font-awesome'/>    {l.goal1} </Text> 
+          </View>
+          <View style={styles.incorrect}>
+            <Text style={styles.goaltext}> <Icon name='times-circle-o' type='font-awesome'/>    {l.goal2} </Text> 
+          </View>
+          <View style={styles.correct}>
+            <Text style={styles.goaltext}> <Icon name='check-circle-o' type='font-awesome'/>    {l.goal3} </Text> 
+          </View>
+          <View style={styles.incorrect}>
+            <Text style={styles.goaltext}> <Icon name='times-circle-o' type='font-awesome'/>    {l.goal4} </Text> 
+          </View>
+        </View>
         </>
         ))
       }</ScrollView>
@@ -96,13 +103,28 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start'
   },
+  incorrect: {
+    borderWidth: 1, 
+    borderRadius: 10,
+    borderColor: '#3d3d3d',
+    padding: 10,
+    backgroundColor: '#3d3d3d'
+  },
+  correct: {
+    borderWidth: 1, 
+    borderRadius: 10,
+    borderColor: '#033500',
+    padding: 10,
+    backgroundColor: '#033500'
+  },
   title: {
-    fontSize: 20,
+    fontSize: 22,
     color: 'white'
   },
   goaltext: {
-    fontSize: 16,
-    color: 'white',
+    textAlignVertical: 'center',
+    fontSize: 18,
+    color: '#d9d9d9'
   },
   subtext: {
     alignItems: "flex-end",

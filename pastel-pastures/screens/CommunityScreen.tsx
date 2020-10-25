@@ -41,12 +41,12 @@ export default function CommunityScreen() {
 
 
   return (
-    <ScrollView>{
+    <ScrollView style={ { backgroundColor: '#3d3d3d'} }>{
       list.map((l, i) => (
-        <ListItem key={i} bottomDivider>
+        <ListItem key={i} bottomDivider containerStyle= { { backgroundColor: '#3d3d3d'} }>
           <Avatar rounded source={{uri: l.avatar_url}}/>
           <ListItem.Content>
-            <ListItem.Title>{l.name}</ListItem.Title>
+            <ListItem.Title style= { {color: '#d9d9d9'} }>{l.name}</ListItem.Title>
           </ListItem.Content>
           <ListItem.Subtitle style= {styles.scoretext}>{l.score + " MP"}</ListItem.Subtitle>
         </ListItem>
@@ -64,9 +64,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#d9d9d9'
   },
   scoretext: {
-    alignContent: 'flex-end'
+    alignContent: 'flex-end',
+    color: '#c4c4c4'
   },
   separator: {
     marginVertical: 30,
