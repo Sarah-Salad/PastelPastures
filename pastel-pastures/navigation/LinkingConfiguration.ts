@@ -16,6 +16,16 @@ export default {
               TabTwoScreen: 'two',
             },
           },
+          HistoryTab: {
+            screens: {
+              HistoryScreen: 'history',
+            },
+          },
+          CommunityTab: {
+            screens: {
+              CommunityScreen: 'community',
+            },
+          },
         },
       },
       NotFound: '*',

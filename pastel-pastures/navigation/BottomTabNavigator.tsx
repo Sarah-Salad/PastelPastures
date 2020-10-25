@@ -5,9 +5,11 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import CommunityScreen from '../screens/CommunityScreen';
+import HistoryScreen from '../screens/HistoryScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, HistoryTabParamList, CommunityTabParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -28,6 +30,20 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="History"
+        component={HistoryTabNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Community"
+        component={CommunityTabNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
@@ -71,3 +87,32 @@ function TabTwoNavigator() {
     </TabTwoStack.Navigator>
   );
 }
+
+const HistoryTabStack = createStackNavigator<HistoryTabParamList>();
+
+function HistoryTabNavigator() {
+  return (
+    <HistoryTabStack.Navigator>
+      <HistoryTabStack.Screen
+        name="HistoryScreen"
+        component={HistoryScreen}
+        options={{ headerTitle: 'History' }}
+      />
+    </HistoryTabStack.Navigator>
+  );
+}
+
+const  CommunityTabStack = createStackNavigator<CommunityTabParamList>();
+
+function CommunityTabNavigator() {
+  return (
+    <CommunityTabStack.Navigator>
+      <CommunityTabStack.Screen
+        name="CommunityScreen"
+        component={CommunityScreen}
+        options={{ headerTitle: 'Community' }}
+      />
+    </CommunityTabStack.Navigator>
+  );
+}
+
