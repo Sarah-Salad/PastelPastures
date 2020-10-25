@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, ImageBackground } from "react-native";
 import { Card, Icon } from "react-native-elements";
 import { Text, View } from "../components/Themed";
 
@@ -16,9 +16,8 @@ export default function Profile() {
             <View style={styles.header}>
                 <Image
                     style={styles.avatar}
-                    source={require("../assets/images/favicon.png")}
+                    source={require("../assets/images/profile.png")}
                 />
-
                 <Text style={styles.name}>Thomas Felton</Text>
                 <View style={styles.locationContainer}>
                     <Icon
@@ -84,7 +83,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     header: {
-        backgroundColor: "#333333",
+        backgroundColor: "#033500",
         height: 300,
         alignItems: "center",
     },
