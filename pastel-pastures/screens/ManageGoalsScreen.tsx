@@ -25,12 +25,10 @@ class ManageGoalsScreen extends React.Component<Props>{
 
   constructor(props:any){
     super(props);
-    this.SetDefaultGoals();
     this.RetrieveGoals();
   }
 
   SetDefaultGoals(){
-    AsyncStorage.clear();
     (async() =>{
       console.log("started async");
       try{
@@ -52,10 +50,11 @@ class ManageGoalsScreen extends React.Component<Props>{
     (async() =>{
       try{
         var goalsArrayString = await AsyncStorage.getItem('goals');
-        if (goalsArrayString !== null){
+        if (goalsArrayString !== null && goalsArrayString !== undefined){
           goalsArray = JSON.parse(goalsArrayString);
           this.setState({goals: goalsArray});
         }
+        else (this.SetDefaultGoals())
       }catch(error){console.log(error)};
     })();
   }
@@ -69,6 +68,7 @@ class ManageGoalsScreen extends React.Component<Props>{
     console.log(goal + 'this is the splice');
     (async() =>{
       try{
+        await AsyncStorage.setItem('goals', JSON.stringify(array));
         var userGoalsArrayString = await AsyncStorage.getItem('userGoals');
         if(userGoalsArrayString !== null){
           var userGoalsArray = JSON.parse(userGoalsArrayString);
