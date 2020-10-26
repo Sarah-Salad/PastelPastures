@@ -9,80 +9,111 @@ import { AsyncStorage } from "react-native";
 import Storage from "../storage/Storage";
 import { Alert } from "react-native";
 
-var goalsArray: Array<any>;
-AsyncStorage.clear();
-(async() =>{
-  console.log("started async");
-  try{
-    await AsyncStorage.setItem('goals', JSON.stringify([
-      {name: 'Take a walk', BP: 10, completed: false},
-      {name: 'Take a shower', BP: 5, completed: false},
-      {name: 'Do an exercise routine', BP: 15, completed: false},
-      {name: 'Read for an hour', BP: 10, completed: false}
-    ]))
-    var goalsArrayString = await AsyncStorage.getItem('goals');
-    if (goalsArrayString !== null){
-      console.log(goalsArrayString);
-      goalsArray = JSON.parse(goalsArrayString);
-    }
-  } catch(error){
-    console.log(error)
-  }
-})();
+interface Props {
+  navigation: any
+}
+
+
 
 function MatchingName(name:string) {
   return((element:any) => element.name === name);
 }
 
-function AddToUserGoals(name: string){
-  var goalIndex = goalsArray.findIndex(MatchingName(name));
-  var goal = goalsArray.splice(goalIndex);
-  (async() =>{
-    try{
-      var userGoalsArrayString = await AsyncStorage.getItem('UserGoals');
-      if(userGoalsArrayString !== null){
-        var userGoalsArray = JSON.parse(userGoalsArrayString);
-        userGoalsArray.push(goal);
-        userGoalsArrayString = JSON.stringify(userGoalsArray);
-        await AsyncStorage.setItem('UserGoals', userGoalsArrayString);
-        const newArray = await AsyncStorage.getItem('userGoals');
-        console.log(newArray);
-      }
-    } catch(error){
-      console.log(error)
-    }
-  })();
-}
 
-export default function ManageGoalsScreen({ navigation }: any) {
-  return (
+class ManageGoalsScreen extends React.Component<Props>{
+  state = {goals: Array<{name: string, BP: number, complete: boolean}>()};
+
+  constructor(props:any){
+    super(props);
+    this.SetDefaultGoals();
+    this.RetrieveGoals();
+  }
+
+  SetDefaultGoals(){
+    AsyncStorage.clear();
+    (async() =>{
+      console.log("started async");
+      try{
+        console.log('trying');
+        await AsyncStorage.setItem('goals', JSON.stringify([
+          {name: 'Take a walk', BP: 10, completed: false},
+          {name: 'Take a shower', BP: 5, completed: false},
+          {name: 'Do an exercise routine', BP: 15, completed: false},
+          {name: 'Read for an hour', BP: 10, completed: false}
+        ]))
+      } catch(error){
+        console.log(error)
+      }
+    })();
+  }
+  
+  RetrieveGoals(){
+    var goalsArray: Array<object> = [];
+    (async() =>{
+      try{
+        var goalsArrayString = await AsyncStorage.getItem('goals');
+        if (goalsArrayString !== null){
+          console.log(goalsArrayString);
+          goalsArray = JSON.parse(goalsArrayString);
+          console.log(goalsArray);
+          this.setState({goals: goalsArray});
+        }
+      }catch(error){console.log(error)};
+    })();
+    console.log(goalsArray);
+  }
+
+  AddToUserGoals(name: string){
+    var goalIndex = this.state.goals.findIndex(MatchingName(name));
+    var goal = this.state.goals.splice(goalIndex);
+    (async() =>{
+      try{
+        var userGoalsArrayString = await AsyncStorage.getItem('UserGoals');
+        if(userGoalsArrayString !== null){
+          var userGoalsArray = JSON.parse(userGoalsArrayString);
+          userGoalsArray.push(goal);
+          userGoalsArrayString = JSON.stringify(userGoalsArray);
+          await AsyncStorage.setItem('UserGoals', userGoalsArrayString);
+          const newArray = await AsyncStorage.getItem('userGoals');
+          console.log(newArray);
+        }
+      } catch(error){
+        console.log(error)
+      }
+    })();
+  }
+
+  render(){
+    return(
     <View style={styles.container}>
       <Header containerStyle={styles.header}
         leftComponent={{ icon: 'arrow-back', color: '#fff', onPress: (() => {
-          navigation.navigate('HomeScreen')
+          this.props.navigation.navigate('HomeScreen')
         })}}
         centerComponent={{ text: 'Add Goals', style: { color: '#fff' } }}
         ></Header>
         <View style = {styles.list}>{
-        goalsArray.map((l, i) => (
+        this.state.goals.map((l, i) => (
           <ListItem key={i} bottomDivider containerStyle = {styles.listItem}>
           <ListItem.Content >
             <ListItem.Title style={{color: "white"}}>{l.name}</ListItem.Title>
           </ListItem.Content>
           <ListItem.Chevron onPress = {() => {
-            AddToUserGoals(l.name);
+            this.AddToUserGoals(l.name);
           }} style = {styles.rightIcon} iconProps = {{name:"add", size:21}}/>
           </ListItem>
         ))
       }
       </View>
       <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
-      <Text style={styles.title}>Manage Goals</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/ManageGoalsScene.js" />
     </View>
-  );
+    );
+  }
 }
+
+export default ManageGoalsScreen;
 
 const styles = StyleSheet.create({
     container: {
