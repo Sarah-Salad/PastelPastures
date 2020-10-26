@@ -56,6 +56,7 @@ class ManageGoalsScreen extends React.Component<Props>{
           goalsArray = JSON.parse(goalsArrayString);
           this.setState({goals: goalsArray});
         }
+
         else (this.SetDefaultGoals())
       }catch(error){console.log(error)};
     })();
@@ -95,13 +96,26 @@ class ManageGoalsScreen extends React.Component<Props>{
         leftComponent={{ icon: 'arrow-back', color: '#fff', onPress: (() => {
           this.props.navigation.navigate('HomeScreen')
         })}}
-        centerComponent={{ text: 'Add Goals', style: { color: '#fff' } }}
+        centerComponent={{ text: 'Add Goals',
+                       style: {
+                        color: "#fff",
+                        fontSize: 25,
+                        fontFamily: "roboto",
+                    }}}
         ></Header>
         <View style = {styles.list}>{
         this.state.goals.map((l, i) => (
-          <ListItem key={i} bottomDivider containerStyle = {styles.listItem}>
+          <ListItem key={i} bottomDivider containerStyle = {styles.listItem} 
+               onPress={() => {
+                 Alert.alert(
+                 "Goal Added",
+                  "Okay! We just added '" +
+                   l.name +
+                   "' to your goals. Taking care of yourself is the first step to improving your mindspace."
+                );
+            }}>
           <ListItem.Content >
-            <ListItem.Title style={{color: "white"}}>{l.name}</ListItem.Title>
+            <ListItem.Title style={{color: "white", fontFamily: "roboto"}}>{l.name}</ListItem.Title>
           </ListItem.Content>
           <ListItem.Chevron onPress = {() => {
             this.AddToUserGoals(l.name);
@@ -114,11 +128,13 @@ class ManageGoalsScreen extends React.Component<Props>{
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/ManageGoalsScene.js" />
     </View>
+
     );
   }
 }
 
 export default ManageGoalsScreen;
+
 
 const styles = StyleSheet.create({
     container: {
@@ -127,7 +143,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: "bold",
-        fontFamily: 'serif'
+        fontFamily: "roboto",
     },
     separator: {
         marginVertical: 30,

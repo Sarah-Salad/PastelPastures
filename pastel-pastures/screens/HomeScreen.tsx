@@ -154,6 +154,7 @@ class HomeScreen extends React.Component<Props>{
                     ))}
                 </View>
                 <View style={styles.list}>
+
                     <ListItem
                         containerStyle={styles.listItem}
                         onPress={() => {
@@ -162,12 +163,14 @@ class HomeScreen extends React.Component<Props>{
                     >
                         {<Icon name="plus" type="font-awesome" color="#3b7a31" />}
                         <ListItem.Content>
+
                             <ListItem.Title style={{ color: "#fff", fontFamily: "serif" }}>
                                 {"Add a New Goal"}
                             </ListItem.Title>
                         </ListItem.Content>
                     </ListItem>
                 </View>
+
             </View>
         );
     }
@@ -175,16 +178,16 @@ class HomeScreen extends React.Component<Props>{
 
 export default HomeScreen;
 
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#000",
-
     },
     title: {
         fontSize: 20,
         textAlign: "center",
-        fontFamily: "serif",
-        padding: 15
+        fontFamily: "roboto",
+        padding: 15,
     },
     separator: {
         marginVertical: 0,
