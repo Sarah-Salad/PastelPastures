@@ -93,7 +93,7 @@ class HomeScreen extends React.Component<Props>{
                         style: { color: "#fff", fontSize: 25, fontFamily: "serif"},
                     }}
                 ></Header>
-                <Text style={styles.title}>{this.getTotalBP} BP</Text>
+                <Text style={styles.title}>{this.getTotalBP()} BP</Text>
                 <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
     
                 <View style={styles.list}>
