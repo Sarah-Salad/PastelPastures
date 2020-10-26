@@ -30,10 +30,10 @@ class ManageGoalsScreen extends React.Component<Props>{
 
   SetDefaultGoals(){
     const array = [
-      {name: 'Take a walk', BP: 10, completed: false},
-      {name: 'Take a shower', BP: 5, completed: false},
-      {name: 'Do an exercise routine', BP: 15, completed: false},
-      {name: 'Read for an hour', BP: 10, completed: false}
+      {name: 'Take a walk', completed: false, bp: 10},
+      {name: 'Take a shower', completed: false, bp: 5},
+      {name: 'Do an exercise routine', completed: false, bp: 15 },
+      {name: 'Read for an hour', completed: false, bp: 10}
     ];
     (async() =>{
       console.log("started async");
