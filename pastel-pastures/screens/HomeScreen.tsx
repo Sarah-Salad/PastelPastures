@@ -116,6 +116,7 @@ class HomeScreen extends React.Component<Props>{
                                         : "You're doing a great job"
                                 );
                                 l.completed = !l.completed;
+                                this.setState({goals: this.state.goals});
                             }}
                         >
       
