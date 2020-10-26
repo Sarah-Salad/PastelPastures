@@ -61,6 +61,7 @@ class ManageGoalsScreen extends React.Component<Props>{
   }
 
   AddToUserGoals(name: string){
+    console.log("wow");
     var goalIndex = this.state.goals.findIndex(MatchingName(name));
     var array = this.state.goals;
     var goal = array.splice(goalIndex, 1);
