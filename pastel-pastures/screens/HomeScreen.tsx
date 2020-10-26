@@ -6,6 +6,7 @@ import {
     Button,
     SafeAreaView,
     Alert,
+    CheckBox,
 } from "react-native";
 import { Overlay, ListItem, Icon, Header } from "react-native-elements";
 
@@ -15,132 +16,169 @@ import { GoalItem } from "../GoalItem";
 import { Goal, ToggleGoal } from "../types";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { coolDownAsync } from "expo-web-browser";
+import AsyncStorage from "@react-native-community/async-storage";
+import UserGoals from "../UserGoals.json";
 
-// Example data
-const goalList = [
-    {
-        title: "Do an Exercise Routine",
-        completed: false,
-        bp: 15,
-        icon: <Icon name="heartbeat" type="font-awesome" color="#f60" />,
-    },
-    {
-        title: "Meditate for 10 minutes",
-        completed: true,
-        bp: 10,
-        icon: <Icon name="odnoklassniki" type="font-awesome" color="#aad9fa" />,
-    },
-    {
-        title: "Get enough sleep",
-        completed: false,
-        bp: 10,
-        icon: <Icon name="moon-o" type="font-awesome" color="#8e80ff" />,
-    },
-];
+interface Props {
+    navigation: any
+  }
+  
+  
 
-// Returns the sum of Bloom Points from goalList
-function getTotalBP() {
-    let totalBP = 0;
-    for (let i = 0; i < goalList.length; i++) {
-        if (goalList[i].completed) {
-            totalBP += goalList[i].bp;
-        }
+class HomeScreen extends React.Component<Props>{
+    state = {goals: Array<{name: string, bp: number, completed: boolean}>()};
+    constructor(props:any){
+        super(props);
+        this.SetDefaultGoals();
+        this.RetrieveGoals();
+        this.getTotalBP();
     }
 
-    return totalBP;
-}
+    CheckGoalStorage() {
+        (async() => {
+            try {
+                let userData = await AsyncStorage.getItem('userGoals');
+                return userData;
+            } catch (error) {
+                console.log(error);
+            }
+        })
+    }
 
-// The main function of the file, returns the Home screen
-export default function HomeScreen({ navigation }: any) {
-    return (
-        <View style={styles.container}>
-            <Header
-                containerStyle={styles.header}
-                centerComponent={{
-                    text: "Time to Bloom",
-                    style: {
-                        color: "#fff",
-                        fontSize: 25,
-                        fontFamily: "roboto",
-                    },
-                }}
-            ></Header>
-            <Text style={styles.title}>{getTotalBP()} BP</Text>
-            <View
-                style={styles.separator}
-                lightColor="#eee"
-                darkColor="rgba(255,255,255,0.1)"
-            />
+    SetDefaultGoals(){
+        if(this.CheckGoalStorage() == null){
+            AsyncStorage.clear();
+        }
+        (async() =>{
+            console.log("started user async");
+            try {
 
-            <View style={styles.list}>
-                {/* Maps the list into list items */}
-                {goalList.map((l, i) => (
-                    <ListItem
-                        key={i}
-                        bottomDivider
-                        containerStyle={
-                            l.completed
-                                ? { backgroundColor: "#609433" }
-                                : { backgroundColor: "#000" }
-                        }
-                        onPress={() => {
-                            Alert.alert(
-                                "I'm proud of you",
-                                !l.completed
-                                    ? "Great job! You just earned " +
-                                          l.bp +
-                                          " Bloom Points"
-                                    : "You're doing a great job"
-                            );
-                            l.completed = !l.completed;
-                        }}
-                    >
-                        {l.icon}
-                        <ListItem.Content>
-                            <ListItem.Title
-                                style={{
-                                    color: "white",
-                                    fontFamily: "roboto",
-                                }}
-                            >
-                                {l.title}
-                            </ListItem.Title>
-                        </ListItem.Content>
-                        <ListItem.Chevron
-                            style={styles.rightIcon}
-                            iconProps={
-                                l.completed
-                                    ? { name: "ios-checkmark", size: 21 }
-                                    : { name: "ios-close", size: 21 }
-                            }
-                        />
-                    </ListItem>
-                ))}
-            </View>
-            <View style={styles.list}>
-                <ListItem
-                    containerStyle={styles.listItem}
-                    onPress={() => {
-                        navigation.navigate("ManageGoalsScreen");
+                await AsyncStorage.setItem('userGoals',JSON.stringify(
+                    UserGoals.userGoals
+                ))        
+            } catch (error) {
+                    console.log(error);
+                }
+        })();
+    }
+
+    RetrieveGoals(){
+        let userGoals:Array<object> = [];
+        (async() => {
+            try{
+                var userGoalsString = await AsyncStorage.getItem('userGoals');
+                if(userGoalsString !== null){
+                    console.log(userGoalsString);
+                    userGoals = JSON.parse(userGoalsString);
+                    console.log(userGoals);
+                    this.setState({goals: userGoals});
+
+                }
+
+            } catch(error){
+                console.log(error);
+            }
+        })();
+        console.log(userGoals);
+    }
+
+    getTotalBP(){
+        try{
+        let totalBP = 0;
+        for(let i = 0; i < this.state.goals.length; i++){
+        if(this.state.goals[i].completed){
+            totalBP += this.state.goals[i].bp;
+        }
+        }
+    
+        return totalBP;
+        } catch (error){
+        console.log(error);
+        }
+    
+    }
+
+    render(){
+        return (
+            <View style={styles.container}>
+                <Header
+                    containerStyle={styles.header}
+                    centerComponent={{
+                        text: "Time to Bloom",
+                        style: { color: "#fff", fontSize: 25, fontFamily: "serif"},
                     }}
-                >
-                    {<Icon name="plus" type="font-awesome" color="#3b7a31" />}
-                    <ListItem.Content>
-                        <ListItem.Title
-                            style={{
-                                color: "#fff",
-                                fontFamily: "roboto",
+                ></Header>
+                <Text style={styles.title}>{this.getTotalBP()} BP</Text>
+                <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
+    
+                <View style={styles.list}>
+                    {this.state.goals.map((l, i) => (
+                        <ListItem
+                            key={i}
+                            bottomDivider
+                            containerStyle={
+                                l.completed
+                                    ? { backgroundColor: "#609433" }
+                                    : { backgroundColor: "#000" }
+                            }
+                            onPress={() => {
+                                Alert.alert(
+                                    "I'm proud of you",
+                                    !l.completed
+                                        ? "Great job! You just earned " +
+                                              l.bp +
+                                              " Bloom Points"
+                                        : "You're doing a great job"
+                                );
+                                l.completed = !l.completed;
+                                this.setState({goals: this.state.goals});
                             }}
                         >
-                            {"Add a New Goal"}
-                        </ListItem.Title>
-                    </ListItem.Content>
-                </ListItem>
+      
+                            <ListItem.Content>
+                                
+                                <ListItem.Title style={{ color: "white", fontFamily: "serif" }}>
+                                    
+                                    {l.name}
+                                </ListItem.Title>
+                            </ListItem.Content>
+                            <ListItem.Chevron
+                                style={styles.rightIcon}
+                                iconProps={
+                                    l.completed
+                                        ? { name: "check", size: 21 }
+                                        : { name: "remove", size: 21 }
+                                }
+                            />
+                        </ListItem>
+                    ))}
+                </View>
+                <View style={styles.list}>
+
+                    <ListItem
+                        containerStyle={styles.listItem}
+                        onPress={() => {
+                            this.props.navigation.navigate("ManageGoalsScreen");
+                        }}
+                    >
+                        {<Icon name="plus" type="font-awesome" color="#3b7a31" />}
+                        <ListItem.Content>
+
+                            <ListItem.Title style={{ color: "#fff", fontFamily: "serif" }}>
+                                {"Add a New Goal"}
+                            </ListItem.Title>
+                        </ListItem.Content>
+                    </ListItem>
+                </View>
+
             </View>
-        </View>
-    );
+        );
+    }
 }
-// Used to style the Home screen
+
+export default HomeScreen;
+
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#000",

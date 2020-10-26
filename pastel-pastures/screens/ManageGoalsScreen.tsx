@@ -9,82 +9,133 @@ import { AsyncStorage } from "react-native";
 import Storage from "../storage/Storage";
 import { Alert } from "react-native";
 
-<Storage />;
-console.log("pre async");
-(async () => {
-    console.log("started async");
-    try {
-        const goalArray = await AsyncStorage.getItem("Goals");
-        if (goalArray !== null) {
-            console.log(goalArray);
+
+interface Props {
+  navigation: any
+}
+
+
+function MatchingName(name:string) {
+  return((element:any) => element.name === name);
+}
+
+
+class ManageGoalsScreen extends React.Component<Props>{
+  state = {goals: Array<{name: string, BP: number, complete: boolean}>()};
+
+  constructor(props:any){
+    super(props);
+    this.RetrieveGoals();
+  }
+
+  SetDefaultGoals(){
+    const array = [
+      {name: 'Take a walk', BP: 10, completed: false},
+      {name: 'Take a shower', BP: 5, completed: false},
+      {name: 'Do an exercise routine', BP: 15, completed: false},
+      {name: 'Read for an hour', BP: 10, completed: false}
+    ];
+    (async() =>{
+      console.log("started async");
+      try{
+        console.log('trying');
+        await AsyncStorage.setItem('goals', JSON.stringify(array))
+        this.setState({goals: array});
+      } catch(error){
+        console.log(error)
+      }
+    })();
+  }
+  
+  RetrieveGoals(){
+    var goalsArray: Array<object> = [];
+    (async() =>{
+      try{
+        var goalsArrayString = await AsyncStorage.getItem('goals');
+        if (goalsArrayString !== null && goalsArrayString !== undefined){
+          goalsArray = JSON.parse(goalsArrayString);
+          this.setState({goals: goalsArray});
         }
-    } catch (error) {
-        console.log("oops");
-    }
-})();
-const list = [
-    {
-        name: "Take a walk",
-    },
-    {
-        name: "Take a Shower",
-    },
-    {
-        name: "Do an Exercise routine",
-    },
-    {
-        name: "Read for an hour",
-    },
-];
-// The main function of the file, returns the ManageGoals screen
-export default function ManageGoalsScreen({ navigation }: any) {
-    return (
-        <View style={styles.container}>
-            <Header
-                containerStyle={styles.header}
-                centerComponent={{
-                    text: "Add Goals",
-                    style: {
+
+        else (this.SetDefaultGoals())
+      }catch(error){console.log(error)};
+    })();
+  }
+
+  AddToUserGoals(name: string){
+    console.log("wow");
+    var goalIndex = this.state.goals.findIndex(MatchingName(name));
+    var array = this.state.goals;
+    var goal = array.splice(goalIndex, 1);
+    this.setState({goals: array});
+    console.log(goal + 'this is the splice');
+    (async() =>{
+      try{
+        await AsyncStorage.setItem('goals', JSON.stringify(array));
+        var userGoalsArrayString = await AsyncStorage.getItem('userGoals');
+        if(userGoalsArrayString !== null){
+          var userGoalsArray = JSON.parse(userGoalsArrayString);
+          userGoalsArray.push(goal);
+          userGoalsArrayString = JSON.stringify(userGoalsArray);
+          await AsyncStorage.setItem('userGoals', userGoalsArrayString);
+          const newArray = await AsyncStorage.getItem('userGoals');
+          console.log(newArray);
+        }
+      } catch(error){
+        console.log(error)
+      }
+    })();
+    console.log(this.state.goals);
+  }
+
+
+  render(){
+    return(
+    <View style={styles.container}>
+      <Header containerStyle={styles.header}
+        leftComponent={{ icon: 'arrow-back', color: '#fff', onPress: (() => {
+          this.props.navigation.navigate('HomeScreen')
+        })}}
+        centerComponent={{ text: 'Add Goals',
+                       style: {
                         color: "#fff",
                         fontSize: 25,
                         fontFamily: "roboto",
-                    },
-                }}
-            ></Header>
-            <View style={styles.list}>
-                {/* Maps the list into list items */}
-                {list.map((l, i) => (
-                    <ListItem
-                        key={i}
-                        bottomDivider
-                        containerStyle={styles.listItem}
-                        onPress={() => {
-                            Alert.alert(
-                                "Goal Added",
-                                "Okay! We just added '" +
-                                    l.name +
-                                    "' to your goals. Taking care of yourself is the first step to improving your mindspace."
-                            );
-                        }}
-                    >
-                        <ListItem.Content>
-                            <ListItem.Title
-                                style={{ color: "white", fontFamily: "roboto" }}
-                            >
-                                {l.name}
-                            </ListItem.Title>
-                        </ListItem.Content>
-                        <ListItem.Chevron
-                            style={styles.rightIcon}
-                            iconProps={{ name: "add", size: 21 }}
-                        />
-                    </ListItem>
-                ))}
-            </View>
-        </View>
+                    }}}
+        ></Header>
+        <View style = {styles.list}>{
+        this.state.goals.map((l, i) => (
+          <ListItem key={i} bottomDivider containerStyle = {styles.listItem} 
+               onPress={() => {
+                 Alert.alert(
+                 "Goal Added",
+                  "Okay! We just added '" +
+                   l.name +
+                   "' to your goals. Taking care of yourself is the first step to improving your mindspace."
+                );
+            }}>
+          <ListItem.Content >
+            <ListItem.Title style={{color: "white", fontFamily: "roboto"}}>{l.name}</ListItem.Title>
+          </ListItem.Content>
+          <ListItem.Chevron onPress = {() => {
+            this.AddToUserGoals(l.name);
+          }} style = {styles.rightIcon} iconProps = {{name:"add", size:21}}/>
+          </ListItem>
+        ))
+      }
+      </View>
+      <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
+      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <EditScreenInfo path="/screens/ManageGoalsScene.js" />
+    </View>
+
     );
+  }
 }
-// Used to style the Goals screen
+
+export default ManageGoalsScreen;
+
+
 const styles = StyleSheet.create({
     container: {
         //alignItems: 'center',
