@@ -6,6 +6,7 @@ import {
     Button,
     SafeAreaView,
     Alert,
+    CheckBox,
 } from "react-native";
 import { Overlay, ListItem, Icon, Header } from "react-native-elements";
 
@@ -33,11 +34,25 @@ class HomeScreen extends React.Component<Props>{
         this.getTotalBP();
     }
 
+    CheckGoalStorage() {
+        (async() => {
+            try {
+                let userData = await AsyncStorage.getItem('userGoals');
+                return userData;
+            } catch (error) {
+                console.log(error);
+            }
+        })
+    }
+
     SetDefaultGoals(){
-        AsyncStorage.clear();
+        if(this.CheckGoalStorage() == null){
+            AsyncStorage.clear();
+        }
         (async() =>{
             console.log("started user async");
             try {
+
                 await AsyncStorage.setItem('userGoals',JSON.stringify(
                     UserGoals.userGoals
                 ))        
