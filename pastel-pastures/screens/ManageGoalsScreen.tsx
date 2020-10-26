@@ -19,26 +19,6 @@ function MatchingName(name:string) {
   return((element:any) => element.name === name);
 }
 
-function AddToUserGoals(name: string, goalsArray:Array<any>){
-  var goalIndex = goalsArray.findIndex(MatchingName(name));
-  var goal = goalsArray.splice(goalIndex);
-  (async() =>{
-    try{
-      var userGoalsArrayString = await AsyncStorage.getItem('UserGoals');
-      if(userGoalsArrayString !== null){
-        var userGoalsArray = JSON.parse(userGoalsArrayString);
-        userGoalsArray.push(goal);
-        userGoalsArrayString = JSON.stringify(userGoalsArray);
-        await AsyncStorage.setItem('UserGoals', userGoalsArrayString);
-        const newArray = await AsyncStorage.getItem('userGoals');
-        console.log(newArray);
-      }
-    } catch(error){
-      console.log(error)
-    }
-  })();
-}
-
 
 class ManageGoalsScreen extends React.Component<Props>{
   state = {goals: Array<{name: string, BP: number, complete: boolean}>()};
@@ -83,6 +63,26 @@ class ManageGoalsScreen extends React.Component<Props>{
     console.log(goalsArray);
   }
 
+  AddToUserGoals(name: string){
+    var goalIndex = this.state.goals.findIndex(MatchingName(name));
+    var goal = this.state.goals.splice(goalIndex);
+    (async() =>{
+      try{
+        var userGoalsArrayString = await AsyncStorage.getItem('UserGoals');
+        if(userGoalsArrayString !== null){
+          var userGoalsArray = JSON.parse(userGoalsArrayString);
+          userGoalsArray.push(goal);
+          userGoalsArrayString = JSON.stringify(userGoalsArray);
+          await AsyncStorage.setItem('UserGoals', userGoalsArrayString);
+          const newArray = await AsyncStorage.getItem('userGoals');
+          console.log(newArray);
+        }
+      } catch(error){
+        console.log(error)
+      }
+    })();
+  }
+
   render(){
     return(
     <View style={styles.container}>
@@ -99,15 +99,13 @@ class ManageGoalsScreen extends React.Component<Props>{
             <ListItem.Title style={{color: "white"}}>{l.name}</ListItem.Title>
           </ListItem.Content>
           <ListItem.Chevron onPress = {() => {
-            AddToUserGoals(l.name, this.state.goals);
-                        
+            this.AddToUserGoals(l.name);
           }} style = {styles.rightIcon} iconProps = {{name:"add", size:21}}/>
           </ListItem>
         ))
       }
       </View>
       <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
-      <Text style={styles.title}>Manage Goals</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/ManageGoalsScene.js" />
     </View>
