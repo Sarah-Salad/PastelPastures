@@ -62,10 +62,12 @@ const list = [
         goal4: "shower",
     },
 ];
-
+// Main function of the file, returns the History screen
+// The function builds an interface using the ListItem component
 export default function HistoryScreen() {
     return (
         <ScrollView>
+            {/* Maps the list into list items */}
             {list.map((l, i) => (
                 <React.Fragment key={i}>
                     <ListItem
@@ -134,7 +136,7 @@ export default function HistoryScreen() {
         </ScrollView>
     );
 }
-
+// Styling for the built list
 const styles = StyleSheet.create({
     timeContainer: {
         backgroundColor: "#609433",

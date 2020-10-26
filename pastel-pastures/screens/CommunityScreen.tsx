@@ -2,7 +2,10 @@ import * as React from "react";
 import { StyleSheet, ScrollView } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 
+// The main function of the file, returns the Community screen
+// The function builds an interface using the ListItem component
 export default function CommunityScreen() {
+    /* Example data */
     const list = [
         {
             name: "Amy Farha",
@@ -41,9 +44,9 @@ export default function CommunityScreen() {
             score: 20,
         },
     ];
-
     return (
         <ScrollView>
+            {/* Maps the list into list items */}
             {list.map((l, i) => (
                 <ListItem
                     key={i}
@@ -65,6 +68,7 @@ export default function CommunityScreen() {
     );
 }
 
+// Styles the newly created list
 const styles = StyleSheet.create({
     listTitle: {
         color: "#fff",

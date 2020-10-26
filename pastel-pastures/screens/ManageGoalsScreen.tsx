@@ -36,7 +36,7 @@ const list = [
         name: "Read for an hour",
     },
 ];
-
+// The main function of the file, returns the ManageGoals screen 
 export default function ManageGoalsScreen({ navigation }: any) {
     return (
         <View style={styles.container}>
@@ -48,6 +48,7 @@ export default function ManageGoalsScreen({ navigation }: any) {
                 }}
             ></Header>
             <View style={styles.list}>
+                {/* Maps the list into list items */}
                 {list.map((l, i) => (
                     <ListItem
                         key={i}
@@ -71,7 +72,7 @@ export default function ManageGoalsScreen({ navigation }: any) {
         </View>
     );
 }
-
+// Used to style the Goals screen
 const styles = StyleSheet.create({
     container: {
         //alignItems: 'center',

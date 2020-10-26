@@ -16,6 +16,7 @@ import { Goal, ToggleGoal } from "../types";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { coolDownAsync } from "expo-web-browser";
 
+// Example data
 const goalList = [
     {
         title: "Do an Exercise Routine",
@@ -38,7 +39,7 @@ const goalList = [
 ];
 
 
-
+// Returns the sum of Bloom Points from goalList
 function getTotalBP(){
 
   let totalBP = 0;
@@ -50,7 +51,8 @@ function getTotalBP(){
 
   return totalBP;
 }
-  
+
+// The main function of the file, returns the Home screen
 export default function HomeScreen({ navigation }: any) {
     return (
         <View style={styles.container}>
@@ -65,6 +67,7 @@ export default function HomeScreen({ navigation }: any) {
             <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
 
             <View style={styles.list}>
+                {/* Maps the list into list items */}
                 {goalList.map((l, i) => (
                     <ListItem
                         key={i}
@@ -121,7 +124,7 @@ export default function HomeScreen({ navigation }: any) {
         </View>
     );
 }
-
+// Used to style the Home screen
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#000",
