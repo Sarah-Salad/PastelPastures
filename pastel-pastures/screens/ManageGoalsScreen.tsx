@@ -29,16 +29,18 @@ class ManageGoalsScreen extends React.Component<Props>{
   }
 
   SetDefaultGoals(){
+    const array = [
+      {name: 'Take a walk', BP: 10, completed: false},
+      {name: 'Take a shower', BP: 5, completed: false},
+      {name: 'Do an exercise routine', BP: 15, completed: false},
+      {name: 'Read for an hour', BP: 10, completed: false}
+    ];
     (async() =>{
       console.log("started async");
       try{
         console.log('trying');
-        await AsyncStorage.setItem('goals', JSON.stringify([
-          {name: 'Take a walk', BP: 10, completed: false},
-          {name: 'Take a shower', BP: 5, completed: false},
-          {name: 'Do an exercise routine', BP: 15, completed: false},
-          {name: 'Read for an hour', BP: 10, completed: false}
-        ]))
+        await AsyncStorage.setItem('goals', JSON.stringify(array))
+        this.setState({goals: array});
       } catch(error){
         console.log(error)
       }
