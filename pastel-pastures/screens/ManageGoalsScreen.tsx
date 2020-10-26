@@ -113,6 +113,7 @@ class ManageGoalsScreen extends React.Component<Props>{
                    l.name +
                    "' to your goals. Taking care of yourself is the first step to improving your mindspace."
                 );
+                this.AddToUserGoals(l.name);
             }}>
           <ListItem.Content >
             <ListItem.Title style={{color: "white", fontFamily: "roboto"}}>{l.name}</ListItem.Title>
