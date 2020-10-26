@@ -1,0 +1,26 @@
+{
+    "userGoals": [{
+        "name": "Do an Exercise Routine",
+        "completed": false,
+        "bp": 15,
+        "iconName": "heartbeat",
+        "iconColor": "#f60",
+        "iconType": "font-awesome",
+    },
+    {
+        "name": "Meditate for 10 minutes",
+        "completed": true,
+        "bp": 10,
+       "iconName": "odnoklassniki",
+        "iconColor": "#aad9fa",
+        "iconType": "font-awesome",
+    },
+    {
+        "name": "Get enough sleep",
+        "completed": false,
+        "bp": 10,
+        "iconName": "moon-o",
+        "iconColor": "#8e80ff",
+        "iconType": "font-awesome",
+    }]
+}

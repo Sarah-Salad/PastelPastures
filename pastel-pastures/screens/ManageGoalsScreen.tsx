@@ -9,10 +9,10 @@ import { AsyncStorage } from "react-native";
 import Storage from "../storage/Storage";
 import { Alert } from "react-native";
 
+
 interface Props {
   navigation: any
 }
-
 
 
 function MatchingName(name:string) {
@@ -82,6 +82,7 @@ class ManageGoalsScreen extends React.Component<Props>{
       }
     })();
   }
+
 
   render(){
     return(
