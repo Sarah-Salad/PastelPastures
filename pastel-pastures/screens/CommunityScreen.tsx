@@ -7,37 +7,37 @@ export default function CommunityScreen() {
         {
             name: "Amy Farha",
             avatar_url:
-                "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg",
+                require("../assets/images/plant01.png"),
             score: 1400,
         },
         {
             name: "Chris Jackson",
             avatar_url:
-                "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
+                require("../assets/images/plant02.png"),
             score: 900,
         },
         {
             name: "Guinevere Adams",
             avatar_url:
-                "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
+                require("../assets/images/plant03.png"),
             score: 310,
         },
         {
             name: "Sally Walters",
             avatar_url:
-                "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
+                require("../assets/images/plant07.png"),
             score: 140,
         },
         {
             name: "Alex Ferguson",
             avatar_url:
-                "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
+                require("../assets/images/plant08.png"),
             score: 60,
         },
         {
             name: "Jamie Scott",
             avatar_url:
-                "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
+                require("../assets/images/plant06.png"),
             score: 20,
         },
     ];
@@ -50,7 +50,7 @@ export default function CommunityScreen() {
                     bottomDivider
                     containerStyle={styles.listContainer}
                 >
-                    <Avatar rounded source={{ uri: l.avatar_url }} />
+                    <Avatar rounded source={ {uri: l.avatar_url} } />
                     <ListItem.Content>
                         <ListItem.Title style={styles.listTitle}>
                             {l.name}
