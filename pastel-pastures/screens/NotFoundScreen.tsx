@@ -4,6 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { RootStackParamList } from '../types';
 
+/* Main function of the file, returns the 'Not Found' page */
 export default function NotFoundScreen({
   navigation,
 }: StackScreenProps<RootStackParamList, 'NotFound'>) {
@@ -17,6 +18,7 @@ export default function NotFoundScreen({
   );
 }
 
+// Used to style the 'Not Found' page
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -12,10 +12,11 @@ const badges = [
     { name: "healing", color: "#ba53d1" },
     { name: "games", color: "#d00" },
 ];
-
+// The main function of the file, returns the Profile screen
 export default function Profile() {
     return (
         <View style={styles.container}>
+            {/* Set the background, profile picture and name */}
             <View style={styles.header}>
                 <ImageBackground
                     source={background}
@@ -40,7 +41,7 @@ export default function Profile() {
                     </View>
                 </ImageBackground>
             </View>
-
+            {/* Set the badges */}
             <View style={styles.badgesContainer}>
                 <Text style={styles.title}>Badges</Text>
                 <View style={styles.badges}>
@@ -73,6 +74,7 @@ export default function Profile() {
     );
 }
 
+// Used to style the Profile page
 const styles = StyleSheet.create({
     progressContainer: {
         padding: 10,
