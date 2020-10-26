@@ -15,19 +15,46 @@ AsyncStorage.clear();
   console.log("started async");
   try{
     await AsyncStorage.setItem('goals', JSON.stringify([
-      {name: 'Take a walk', BP: 10, completed: false},
-      {name: 'Take a shower', BP: 5, completed: false},
-      {name: 'Do an exercise routine', BP: 15, completed: false},
-      {name: 'Read for an hour', BP: 10, completed: false}
+      {
+          name: 'Take a walk', 
+          bp: 10, 
+          completed: false,
+          iconName: "odnoklassniki",
+          iconColor: "#aad9fa",
+          iconType: "font-awesome"
+      },
+      {
+          name: 'Take a shower', 
+          bp: 5, 
+          completed: false,
+          iconName: "odnoklassniki",
+          iconColor: "#aad9fa",
+          iconType: "font-awesome"
+        },
+      {
+          name: 'Do an exercise routine', 
+          bp: 15, 
+          completed: false,
+          iconName: "odnoklassniki",
+          iconColor: "#aad9fa",
+          iconType: "font-awesome"
+        },
+      {
+          name: 'Read for an hour', 
+          bp: 10, 
+          completed: false,
+          iconName: "odnoklassniki",
+          iconColor: "#aad9fa",
+          iconType: "font-awesome"
+    }
     ]))
     var goalsArrayString = await AsyncStorage.getItem('goals');
     if (goalsArrayString !== null){
       console.log(goalsArrayString);
       goalsArray = JSON.parse(goalsArrayString);
+    }}catch(error){
+      console.log(error);
     }
-  } catch(error){
-    console.log(error)
-  }
 })();
 
 function MatchingName(name:string) {
@@ -51,7 +78,7 @@ function AddToUserGoals(name: string){
     } catch(error){
       console.log(error)
     }
-  })();
+  })().then();
 }
 
 export default function ManageGoalsScreen({ navigation }: any) {

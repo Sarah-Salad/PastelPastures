@@ -15,6 +15,28 @@ import { GoalItem } from "../GoalItem";
 import { Goal, ToggleGoal } from "../types";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { coolDownAsync } from "expo-web-browser";
+import AsyncStorage from "@react-native-community/async-storage";
+import UserGoals from "../UserGoals.json";
+
+let userGoals = Array<any>();
+(async() =>{
+        console.log("started user async");
+        try {
+            await AsyncStorage.setItem('userGoals',JSON.stringify(
+                UserGoals.userGoals
+            ))        
+            var userGoalsString = await AsyncStorage.getItem('userGoals');
+            if(userGoalsString !== null){
+                console.log(userGoalsString);
+                userGoals = JSON.parse(userGoalsString);
+            } else {
+                return [];
+            }
+        } catch (error) {
+                console.log(error);
+            }
+
+    })().then();
 
 const goalList = [
     {
@@ -40,15 +62,19 @@ const goalList = [
 
 
 function getTotalBP(){
-
-  let totalBP = 0;
-  for(let i = 0; i < goalList.length; i++){
-    if(goalList[i].completed){
-      totalBP += goalList[i].bp;
+  try{
+    let totalBP = 0;
+    for(let i = 0; i < userGoals.length; i++){
+      if(userGoals[i].completed){
+        totalBP += userGoals[i].bp;
+      }
     }
+  
+    return totalBP;
+  } catch (error){
+      console.log(error);
   }
 
-  return totalBP;
 }
   
 export default function HomeScreen({ navigation }: any) {
@@ -65,7 +91,7 @@ export default function HomeScreen({ navigation }: any) {
             <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
 
             <View style={styles.list}>
-                {goalList.map((l, i) => (
+                {userGoals.map((l, i) => (
                     <ListItem
                         key={i}
                         bottomDivider
@@ -86,10 +112,12 @@ export default function HomeScreen({ navigation }: any) {
                             l.completed = !l.completed;
                         }}
                     >
-                        {l.icon}
+  
                         <ListItem.Content>
+                            
                             <ListItem.Title style={{ color: "white", fontFamily: "serif" }}>
-                                {l.title}
+                                
+                                {l.name}
                             </ListItem.Title>
                         </ListItem.Content>
                         <ListItem.Chevron
