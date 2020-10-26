@@ -53,27 +53,27 @@ class ManageGoalsScreen extends React.Component<Props>{
       try{
         var goalsArrayString = await AsyncStorage.getItem('goals');
         if (goalsArrayString !== null){
-          console.log(goalsArrayString);
           goalsArray = JSON.parse(goalsArrayString);
-          console.log(goalsArray);
           this.setState({goals: goalsArray});
         }
       }catch(error){console.log(error)};
     })();
-    console.log(goalsArray);
   }
 
   AddToUserGoals(name: string){
     var goalIndex = this.state.goals.findIndex(MatchingName(name));
-    var goal = this.state.goals.splice(goalIndex);
+    var array = this.state.goals;
+    var goal = array.splice(goalIndex, 1);
+    this.setState({goals: array});
+    console.log(goal + 'this is the splice');
     (async() =>{
       try{
-        var userGoalsArrayString = await AsyncStorage.getItem('UserGoals');
+        var userGoalsArrayString = await AsyncStorage.getItem('userGoals');
         if(userGoalsArrayString !== null){
           var userGoalsArray = JSON.parse(userGoalsArrayString);
           userGoalsArray.push(goal);
           userGoalsArrayString = JSON.stringify(userGoalsArray);
-          await AsyncStorage.setItem('UserGoals', userGoalsArrayString);
+          await AsyncStorage.setItem('userGoals', userGoalsArrayString);
           const newArray = await AsyncStorage.getItem('userGoals');
           console.log(newArray);
         }
@@ -81,6 +81,7 @@ class ManageGoalsScreen extends React.Component<Props>{
         console.log(error)
       }
     })();
+    console.log(this.state.goals);
   }
 
 
