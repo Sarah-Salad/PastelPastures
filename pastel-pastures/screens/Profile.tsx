@@ -67,7 +67,14 @@ export default function Profile() {
                 <Text style={styles.title}>Level:</Text>
                 <View style={styles.progressContainer}>
                     <ProgressBar progress={0.7} color={"#33AA33"} />
-                    <Text style={{ alignSelf: "flex-end", fontFamily: "serif"}}>70/100 BP</Text>
+                    <Text
+                        style={{
+                            alignSelf: "flex-end",
+                            fontFamily: "roboto",
+                        }}
+                    >
+                        70/100 BP
+                    </Text>
                 </View>
             </View>
         </View>
@@ -82,7 +89,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         paddingLeft: 10,
-        fontFamily: "serif"
+        fontFamily: "roboto",
     },
     badgesContainer: {
         margin: 16,
@@ -108,7 +115,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: "600",
         textAlign: "center",
-        fontFamily: "serif",
+        fontFamily: "roboto",
     },
     header: {
         backgroundColor: "#033500",
@@ -134,7 +141,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         paddingBottom: 8,
         textAlign: "center",
-        fontFamily: "serif",
+        fontFamily: "roboto",
     },
     separator: {
         marginVertical: 30,

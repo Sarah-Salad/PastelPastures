@@ -148,18 +148,18 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         color: "white",
-        fontFamily: "serif"
+        fontFamily: "roboto",
     },
     goaltext: {
         fontSize: 16,
         color: "white",
-        fontFamily: "serif"
+        fontFamily: "roboto",
     },
     subtext: {
         alignItems: "flex-end",
         fontSize: 16,
         color: "#c4c4c4",
-        fontFamily: "serif"
+        fontFamily: "roboto",
     },
     listItem: {
         backgroundColor: "#000",

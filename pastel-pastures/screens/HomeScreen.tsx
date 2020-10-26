@@ -38,18 +38,16 @@ const goalList = [
     },
 ];
 
-
 // Returns the sum of Bloom Points from goalList
-function getTotalBP(){
-
-  let totalBP = 0;
-  for(let i = 0; i < goalList.length; i++){
-    if(goalList[i].completed){
-      totalBP += goalList[i].bp;
+function getTotalBP() {
+    let totalBP = 0;
+    for (let i = 0; i < goalList.length; i++) {
+        if (goalList[i].completed) {
+            totalBP += goalList[i].bp;
+        }
     }
-  }
 
-  return totalBP;
+    return totalBP;
 }
 
 // The main function of the file, returns the Home screen
@@ -60,11 +58,19 @@ export default function HomeScreen({ navigation }: any) {
                 containerStyle={styles.header}
                 centerComponent={{
                     text: "Time to Bloom",
-                    style: { color: "#fff", fontSize: 25, fontFamily: "serif"},
+                    style: {
+                        color: "#fff",
+                        fontSize: 25,
+                        fontFamily: "roboto",
+                    },
                 }}
             ></Header>
             <Text style={styles.title}>{getTotalBP()} BP</Text>
-            <View style = {styles.separator} lightColor = "#eee" darkColor = "rgba(255,255,255,0.1)"/>
+            <View
+                style={styles.separator}
+                lightColor="#eee"
+                darkColor="rgba(255,255,255,0.1)"
+            />
 
             <View style={styles.list}>
                 {/* Maps the list into list items */}
@@ -91,7 +97,12 @@ export default function HomeScreen({ navigation }: any) {
                     >
                         {l.icon}
                         <ListItem.Content>
-                            <ListItem.Title style={{ color: "white", fontFamily: "serif" }}>
+                            <ListItem.Title
+                                style={{
+                                    color: "white",
+                                    fontFamily: "roboto",
+                                }}
+                            >
                                 {l.title}
                             </ListItem.Title>
                         </ListItem.Content>
@@ -99,8 +110,8 @@ export default function HomeScreen({ navigation }: any) {
                             style={styles.rightIcon}
                             iconProps={
                                 l.completed
-                                    ? { name: "check", size: 21 }
-                                    : { name: "remove", size: 21 }
+                                    ? { name: "ios-checkmark", size: 21 }
+                                    : { name: "ios-close", size: 21 }
                             }
                         />
                     </ListItem>
@@ -115,7 +126,12 @@ export default function HomeScreen({ navigation }: any) {
                 >
                     {<Icon name="plus" type="font-awesome" color="#3b7a31" />}
                     <ListItem.Content>
-                        <ListItem.Title style={{ color: "#fff", fontFamily: "serif" }}>
+                        <ListItem.Title
+                            style={{
+                                color: "#fff",
+                                fontFamily: "roboto",
+                            }}
+                        >
                             {"Add a New Goal"}
                         </ListItem.Title>
                     </ListItem.Content>
@@ -128,13 +144,12 @@ export default function HomeScreen({ navigation }: any) {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#000",
-
     },
     title: {
         fontSize: 20,
         textAlign: "center",
-        fontFamily: "serif",
-        padding: 15
+        fontFamily: "roboto",
+        padding: 15,
     },
     separator: {
         marginVertical: 0,
