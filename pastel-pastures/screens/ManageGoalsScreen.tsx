@@ -68,12 +68,12 @@ class ManageGoalsScreen extends React.Component<Props>{
     console.log(goal + 'this is the splice');
     (async() =>{
       try{
-        var userGoalsArrayString = await AsyncStorage.getItem('UserGoals');
+        var userGoalsArrayString = await AsyncStorage.getItem('userGoals');
         if(userGoalsArrayString !== null){
           var userGoalsArray = JSON.parse(userGoalsArrayString);
           userGoalsArray.push(goal);
           userGoalsArrayString = JSON.stringify(userGoalsArray);
-          await AsyncStorage.setItem('UserGoals', userGoalsArrayString);
+          await AsyncStorage.setItem('userGoals', userGoalsArrayString);
           const newArray = await AsyncStorage.getItem('userGoals');
           console.log(newArray);
         }
