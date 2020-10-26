@@ -36,7 +36,7 @@ const list = [
         name: "Read for an hour",
     },
 ];
-// The main function of the file, returns the ManageGoals screen 
+// The main function of the file, returns the ManageGoals screen
 export default function ManageGoalsScreen({ navigation }: any) {
     return (
         <View style={styles.container}>
@@ -44,7 +44,11 @@ export default function ManageGoalsScreen({ navigation }: any) {
                 containerStyle={styles.header}
                 centerComponent={{
                     text: "Add Goals",
-                    style: { color: "#fff" ,fontSize: 25, fontFamily: 'serif'},
+                    style: {
+                        color: "#fff",
+                        fontSize: 25,
+                        fontFamily: "roboto",
+                    },
                 }}
             ></Header>
             <View style={styles.list}>
@@ -54,17 +58,25 @@ export default function ManageGoalsScreen({ navigation }: any) {
                         key={i}
                         bottomDivider
                         containerStyle={styles.listItem}
-                        onPress = {() => {
-                            Alert.alert("Goal Added", "Okay! We just added '" + l.name + "' to your goals. Taking care of yourself is the first step to improving your mindspace.");
-                        }}>
+                        onPress={() => {
+                            Alert.alert(
+                                "Goal Added",
+                                "Okay! We just added '" +
+                                    l.name +
+                                    "' to your goals. Taking care of yourself is the first step to improving your mindspace."
+                            );
+                        }}
+                    >
                         <ListItem.Content>
-                            <ListItem.Title style={{ color: "white", fontFamily: 'serif' }}>
+                            <ListItem.Title
+                                style={{ color: "white", fontFamily: "roboto" }}
+                            >
                                 {l.name}
                             </ListItem.Title>
                         </ListItem.Content>
                         <ListItem.Chevron
                             style={styles.rightIcon}
-                            iconProps ={{ name: "add", size: 21 }}
+                            iconProps={{ name: "add", size: 21 }}
                         />
                     </ListItem>
                 ))}
@@ -80,7 +92,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: "bold",
-        fontFamily: 'serif'
+        fontFamily: "roboto",
     },
     separator: {
         marginVertical: 30,

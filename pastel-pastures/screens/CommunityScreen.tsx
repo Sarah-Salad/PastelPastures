@@ -9,38 +9,32 @@ export default function CommunityScreen() {
     const list = [
         {
             name: "Amy Farha",
-            avatar_url:
-                require("../assets/images/plant01.png"),
+            avatar_url: "../assets/images/plant01.png",
             score: 1400,
         },
         {
             name: "Chris Jackson",
-            avatar_url:
-                require("../assets/images/plant02.png"),
+            avatar_url: "../assets/images/plant02.png",
             score: 900,
         },
         {
             name: "Guinevere Adams",
-            avatar_url:
-                require("../assets/images/plant03.png"),
+            avatar_url: "../assets/images/plant03.png",
             score: 310,
         },
         {
             name: "Sally Walters",
-            avatar_url:
-                require("../assets/images/plant07.png"),
+            avatar_url: "../assets/images/plant07.png",
             score: 140,
         },
         {
             name: "Alex Ferguson",
-            avatar_url:
-                require("../assets/images/plant08.png"),
+            avatar_url: "../assets/images/plant08.png",
             score: 60,
         },
         {
             name: "Jamie Scott",
-            avatar_url:
-                require("../assets/images/plant06.png"),
+            avatar_url: "../assets/images/plant06.png",
             score: 20,
         },
     ];
@@ -53,7 +47,7 @@ export default function CommunityScreen() {
                     bottomDivider
                     containerStyle={styles.listContainer}
                 >
-                    <Avatar rounded source={ {uri: l.avatar_url} } />
+                    <Avatar rounded source={{ uri: l.avatar_url }} />
                     <ListItem.Content>
                         <ListItem.Title style={styles.listTitle}>
                             {l.name}
@@ -72,7 +66,7 @@ export default function CommunityScreen() {
 const styles = StyleSheet.create({
     listTitle: {
         color: "#fff",
-        fontFamily: "serif"
+        fontFamily: "roboto",
     },
     listContainer: {
         color: "white",
@@ -86,12 +80,12 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: "bold",
-        fontFamily: "serif"
+        fontFamily: "roboto",
     },
     scoretext: {
         alignContent: "flex-end",
         color: "white",
-        fontFamily: "serif"
+        fontFamily: "roboto",
     },
     separator: {
         marginVertical: 30,
