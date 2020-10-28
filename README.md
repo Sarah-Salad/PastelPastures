@@ -44,7 +44,7 @@ To run the app with live reloading, choose one of:
 * **Bryan Valencia** - [bvalencia002](https://github.com/bvalencia002)
 * **Cameron Walker** - [cwalker012](https://github.com/cwalker012)
 * **Lucas Pham** - [luangia](https://github.com/luangia)
-* **Sarah Lester** - [selester12](https://github.com/selester12)
+* **Sarah Lester** - [Sarah-Salad](https://github.com/sarah-salad)
 
 
 ## :page_with_curl: License
